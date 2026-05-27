@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>連立方程式 チャレンジプリント</title>
+
+<!-- KaTeX for math rendering -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+  font-size: 10pt;
+  line-height: 1.5;
+  color: #111;
+  background: #fff;
+}
+
+/* ── A4 Page Simulation ── */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 8mm 10mm 8mm 10mm;
+  margin: 0 auto 0 auto;
+  background: #fff;
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+/* ── Screen only: page shadow ── */
+@media screen {
+  body { background: #e8e8e8; padding: 20px 0; }
+  .page {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    margin-bottom: 24px;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  body { background: #fff; padding: 0; }
+  .page { margin: 0; box-shadow: none; }
+  .screen-only { display: none; }
+}
+
+/* ── Title Block ── */
+.sheet-title {
+  text-align: center;
+  margin-bottom: 1mm;
+}
+.sheet-title h1 {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "MS Gothic", sans-serif;
+  font-size: 17pt;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #1a2e5a;
+  margin-bottom: 1.5mm;
+}
+.sheet-title .subtitle {
+  font-size: 9.5pt;
+  color: #555;
+  letter-spacing: 0.05em;
+}
+
+.info-row {
+  display: flex;
+  gap: 10mm;
+  align-items: baseline;
+  font-size: 9.5pt;
+  margin: 2.5mm 0 0 0;
+  border-top: 0.5pt solid #ccc;
+  padding-top: 2mm;
+}
+.info-row .field { display: flex; align-items: baseline; gap: 1mm; }
+.info-row .line { display: inline-block; width: 36mm; border-bottom: 0.8pt solid #444; margin-bottom: -1pt; }
+.info-row .line-s { width: 22mm; }
+.info-row .score { margin-left: auto; font-size: 9pt; color: #444; }
+
+.rule { border: none; border-top: 1.5pt solid #1a2e5a; margin: 2.5mm 0 3mm 0; }
+.rule-thin { border: none; border-top: 0.5pt solid #ccc; margin: 1.5mm 0 1.5mm 0; }
+
+/* ── Section Heading ── */
+.section-head {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "MS Gothic", sans-serif;
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #1a2e5a;
+  background: #f0f3fa;
+  border-left: 3.5pt solid #1a2e5a;
+  padding: 1.5mm 3mm;
+  margin: 2mm 0 1mm 0;
+}
+.section-hint {
+  font-size: 8.5pt;
+  color: #555;
+  margin: 0 0 2.5mm 3mm;
+  font-style: italic;
+}
+
+/* ── Problem Grid ── */
+.prob-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 5mm;
+}
+.prob-grid.single { grid-template-columns: 1fr; }
+
+.prob-box {
+  border: 0.5pt solid #ccc;
+  border-radius: 2pt;
+  padding: 2.5mm 3mm 2mm 3mm;
+  margin-bottom: 2.5mm;
+  background: #fff;
+  break-inside: avoid;
+}
+.prob-box.wide {
+  /* for section ⑥, slightly compressed */
+}
+
+/* Problem number badge */
+.prob-num {
+  display: inline-block;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "MS Gothic", sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  background: #1a2e5a;
+  color: #fff;
+  border-radius: 2pt;
+  padding: 0 2.5mm;
+  margin-right: 2mm;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+.prob-tag {
+  font-size: 7.5pt;
+  color: #777;
+  margin-left: 1mm;
+}
+
+/* Equation system */
+.eq-system {
+  margin: 2mm 0 1.5mm 3mm;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0 1mm;
+}
+.brace {
+  font-size: 28pt;
+  line-height: 1;
+  color: #222;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+.eq-lines { display: flex; flex-direction: column; gap: 1mm; }
+.eq-line { font-size: 9.5pt; }
+
+/* KaTeX size adjustment */
+.eq-line .katex { font-size: 1em; }
+.eq-line .katex-display { margin: 0; display: inline; }
+.katex-display > .katex { display: inline; }
+
+/* Work space */
+.work-space {
+  height: 12mm;
+  margin: 2mm 0 1mm 0;
+}
+
+.prob-box.wide .work-space {
+  height: 18mm;
+}
+
+.dot-line {
+  display: none;
+}
+
+/* Answer blank */
+.ans-blank {
+  margin-top: 2mm;
+  font-size: 8.5pt;
+  color: #111;
+  letter-spacing: 0.03em;
+}
+
+/* ── Answer / Solution pages ── */
+.ans-title-block {
+  text-align: center;
+  margin-bottom: 3mm;
+}
+.ans-title-block h1 {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "MS Gothic", sans-serif;
+  font-size: 17pt;
+  font-weight: 900;
+  color: #1a2e5a;
+  letter-spacing: 0.08em;
+  margin-bottom: 1mm;
+}
+.ans-title-block .sub { font-size: 9pt; color: #666; }
+
+.ans-section {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "MS Gothic", sans-serif;
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: #1a2e5a;
+  border-bottom: 0.8pt solid #1a2e5a;
+  margin: 3.5mm 0 2mm 0;
+  padding-bottom: 0.8mm;
+}
+
+.ans-note {
+  font-size: 8pt;
+  font-weight: 700;
+  color: #333;
+  background: #f5f5f5;
+  border-left: 2.5pt solid #888;
+  padding: 0.8mm 2.5mm;
+  margin: 1mm 0 2mm 0;
+}
+
+/* Answer grid */
+.ans-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 5mm;
+}
+.ans-grid.cols1 { grid-template-columns: 1fr; }
+
+.ans-item {
+  margin-bottom: 1.2mm;
+  break-inside: avoid;
+  font-size: 8.5pt;
+  line-height: 1.55;
+}
+.ans-num {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "MS Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  color: #1a2e5a;
+  margin-right: 1mm;
+}
+.ans-result {
+  font-weight: 700;
+  font-size: 9pt;
+  background: #eef2fa;
+  padding: 0 1.5mm;
+  border-radius: 1.5pt;
+}
+.ans-steps {
+  margin: 0.8mm 0 0 4mm;
+  list-style: none;
+  padding: 0;
+}
+.ans-steps li {
+  font-size: 8pt;
+  color: #333;
+  margin-bottom: 0.2mm;
+  padding-left: 3mm;
+  position: relative;
+}
+.ans-steps li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #888;
+  font-size: 7pt;
+}
+.ans-steps li:first-child::before { content: ""; }
+
+/* KaTeX in answers */
+.ans-steps .katex { font-size: 0.95em; }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     PAGE 1: 問題 ①②③
+     ============================================================ -->
+<div class="page">
+  <div class="sheet-title">
+    <h1>連立方程式　チャレンジプリント</h1>
+    <div class="subtitle">〜ワーク終了者向け〜</div>
+  </div>
+  <div class="info-row">
+    <div class="field">氏名：<span class="line"></span></div>
+    <div class="field">クラス：<span class="line line-s"></span></div>
+    <div class="score">　　／　21問</div>
+  </div>
+  <hr class="rule">
+
+  <!-- ① -->
+  <div class="section-head">① ウォームアップ　〔加減法の基本〕</div>
+  <div class="prob-grid">
+    <div class="prob-box">
+      <span class="prob-num">1</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(4x+3y=18\)</div>
+          <div class="eq-line">\(2x-3y=-6\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">2</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(5x-2y=16\)</div>
+          <div class="eq-line">\(3x+2y=8\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+  </div>
+
+  <!-- ② -->
+  <div class="section-head">② 係数をそろえる工夫　〔最小公倍数・係数調整〕</div>
+  <div class="prob-grid">
+    <div class="prob-box">
+      <span class="prob-num">3</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(2x+3y=7\)</div>
+          <div class="eq-line">\(5x-2y=16\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">4</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(3x+4y=1\)</div>
+          <div class="eq-line">\(5x-6y=31\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">5</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(7x-3y=11\)</div>
+          <div class="eq-line">\(2x+5y=1\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">6</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(4x+7y=30\)</div>
+          <div class="eq-line">\(6x-5y=-2\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+  </div>
+
+  <!-- ③ -->
+  <div class="section-head">③ 小数あり　〔まず整数化しよう〕</div>
+  <div class="section-hint">ヒント：両辺に10や100をかけて整数に直してから解こう。</div>
+  <div class="prob-grid">
+    <div class="prob-box">
+      <span class="prob-num">7</span><span class="prob-tag">（基本）</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.2x+0.3y=1.3\)</div>
+          <div class="eq-line">\(0.5x-0.3y=0.5\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">8</span><span class="prob-tag">（やや難）</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.4x-0.2y=1.8\)</div>
+          <div class="eq-line">\(0.6x+0.5y=5.7\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+  </div>
+</div><!-- /page1 -->
+
+
+<!-- ============================================================
+     PAGE 2: 問題 ③続き ④⑤
+     ============================================================ -->
+<div class="page">
+  <!-- ③ continued: 問9 -->
+  <div class="section-head">③ 小数あり（続き）</div>
+  <div class="prob-grid single">
+    <div class="prob-box">
+      <span class="prob-num">9</span><span class="prob-tag">（強）</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(1.2x+0.75y=7.95\)</div>
+          <div class="eq-line">\(0.8x-0.25y=1.45\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+  </div>
+
+  <!-- ④ -->
+  <div class="section-head">④ 分数あり　〔通分・整数化が鍵〕</div>
+  <div class="section-hint">ヒント：分母の最小公倍数を両辺にかけて、分数をなくしてから解こう。</div>
+  <div class="prob-grid">
+    <div class="prob-box">
+      <span class="prob-num">10</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{x}{2}+\dfrac{y}{3}=4\)</div>
+          <div class="eq-line">\(\dfrac{x}{2}-\dfrac{y}{6}=1\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">11</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{2x}{3}+\dfrac{y}{4}=5\)</div>
+          <div class="eq-line">\(\dfrac{x}{6}-\dfrac{y}{4}=-1\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">12</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{x}{5}+\dfrac{y}{2}=6\)</div>
+          <div class="eq-line">\(\dfrac{x}{5}-\dfrac{y}{3}=1\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+  </div>
+
+  <!-- ⑤ -->
+  <div class="section-head">⑤ ちょい難　〔係数大・計算量多め〕</div>
+  <div class="prob-grid">
+    <div class="prob-box">
+      <span class="prob-num">13</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(8x-3y=29\)</div>
+          <div class="eq-line">\(5x+7y=-1\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">14</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(9x+4y=7\)</div>
+          <div class="eq-line">\(7x-5y=55\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box">
+      <span class="prob-num">15</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(12x-7y=17\)</div>
+          <div class="eq-line">\(5x+9y=43\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+  </div>
+</div><!-- /page2 -->
+
+
+<!-- ============================================================
+     PAGE 3: 問題 ⑥ (前半 16〜21)
+     ============================================================ -->
+<div class="page">
+  <div class="section-head">⑥ 総合ハイレベル　〔整理・展開・通分を組み合わせよう〕</div>
+  <div class="section-hint">ヒント：まず式を展開・整理してから、消去法で解こう。焦らず丁寧に！</div>
+
+  <div class="prob-grid">
+    <div class="prob-box wide">
+      <span class="prob-num">16</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.4(3x+1)-0.2(2x+y)=-0.4\)</div>
+          <div class="eq-line">\(3(0.4x-0.5)+5(0.3y-1.1)=-2.8\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box wide">
+      <span class="prob-num">17</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(2(3x-y)-5=4(x+2y)+1\)</div>
+          <div class="eq-line">\(3(2x+y)-7=5(x-y)+8\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box wide">
+      <span class="prob-num">18</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{2x-3y}{4}+\dfrac{x+y}{2}=5\)</div>
+          <div class="eq-line">\(\dfrac{x-2y}{3}-\dfrac{2x+y}{6}=1\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+        <div class="prob-box wide">
+      <span class="prob-num">19</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.3(2x-5y)+1.2=0.4(x+y)-0.8\)</div>
+          <div class="eq-line">\(0.5(3x+y)-2.1=0.2(4x-3y)+0.4\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box wide">
+      <span class="prob-num">20</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{3(2x-y)-5}{4}=2\)</div>
+          <div class="eq-line">\(\dfrac{2(x+y)+1}{3}=\dfrac{x-y+7}{2}\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+    <div class="prob-box wide">
+      <span class="prob-num">21</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.2(5x-3y)+\dfrac{x+y}{2}=4.5\)</div>
+          <div class="eq-line">\(\dfrac{2x-y}{3}-0.4(x-2y)=1.2\)</div>
+        </div>
+      </div>
+      <div class="work-space">
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+        <div class="dot-line"></div><div class="dot-line"></div>
+      </div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+
+  </div>
+</div><!-- /page3 -->
+
+
+<!-- ============================================================
+     PAGE 4: 問題 ⑥ (後半 22〜27)
+     ============================================================ -->
+<div class="page">
+  <div class="section-head">⑥ 総合ハイレベル（続き）</div>
+
+  <div class="prob-grid">
+    <div class="prob-box wide">
+      <span class="prob-num">22</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.3(4x-5y)+1.7=0.5(2x+y)-0.9\)</div>
+          <div class="eq-line">\(0.2(5x+y)-1.1=0.4(x-3y)+2.3\)</div>
+        </div>
+      </div>
+      <div class="work-space"></div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+
+    <div class="prob-box wide">
+      <span class="prob-num">23</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{2x+y}{3}+\dfrac{x-2y}{4}=5\)</div>
+          <div class="eq-line">\(\dfrac{3x-y}{2}-\dfrac{x+y}{6}=7\)</div>
+        </div>
+      </div>
+      <div class="work-space"></div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+
+    <div class="prob-box wide">
+      <span class="prob-num">24</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.5(3x-2y)-0.3(x+y)=2.8\)</div>
+          <div class="eq-line">\(0.2(4x+y)+1.6=0.5(x-2y)\)</div>
+        </div>
+      </div>
+      <div class="work-space"></div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+
+    <div class="prob-box wide">
+      <span class="prob-num">25</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(\dfrac{2(3x-y)-5}{4}=3\)</div>
+          <div class="eq-line">\(\dfrac{3(x+y)+2}{5}=\dfrac{x-2y+4}{2}\)</div>
+        </div>
+      </div>
+      <div class="work-space"></div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+
+    <div class="prob-box wide">
+      <span class="prob-num">26</span>
+      <div class="eq-system">
+        <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.4x+\dfrac{y}{3}=2.1\)</div>
+          <div class="eq-line">\(\dfrac{x}{2}-0.2y=1.7\)</div>
+        </div>
+      </div>
+      <div class="work-space"></div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+    </div>
+
+    <div class="prob-box wide">
+      <span class="prob-num">27</span>
+      <div class="eq-system">
+       <div class="brace">{</div>
+        <div class="eq-lines">
+          <div class="eq-line">\(0.2(3x-5y)+\dfrac{x+y}{4}=1.9\)</div>
+          <div class="eq-line">\(\dfrac{2x-y}{3}-0.5(x-2y)=0.7\)</div>
+        </div>
+      </div>
+      <div class="work-space"></div>
+      <div class="ans-blank">答え：　\(x=\) __________　　\(y=\) __________</div>
+      </div>
+   </div>
+</div><!-- /page4 -->
+
+
+<!-- ============================================================
+     PAGE 5: 解答・解説 ①②③
+     ============================================================ -->
+<div class="page">
+  <div class="ans-title-block">
+    <h1>解答・解説</h1>
+    <div class="sub">連立方程式　チャレンジプリント</div>
+  </div>
+  <hr class="rule">
+
+  <!-- ① -->
+  <div class="ans-section">① ウォームアップ</div>
+  <div class="ans-grid">
+    <div class="ans-item">
+      <span class="ans-num">【1】</span><span class="ans-result">\(x=2,\quad y=\dfrac{10}{3}\)</span>
+      <ul class="ans-steps">
+        <li>①＋②：\(6x=12 \Rightarrow x=2\)</li>
+        <li>①に代入：\(8+3y=18 \Rightarrow y=\dfrac{10}{3}\)</li>
+      </ul>
+    </div>
+    <div class="ans-item">
+      <span class="ans-num">【2】</span><span class="ans-result">\(x=3,\quad y=-\dfrac{1}{2}\)</span>
+      <ul class="ans-steps">
+        <li>①＋②：\(8x=24 \Rightarrow x=3\)</li>
+        <li>①に代入：\(15-2y=16 \Rightarrow y=-\dfrac{1}{2}\)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ② -->
+  <div class="ans-section">② 係数をそろえる工夫</div>
+  <div class="ans-grid">
+    <div class="ans-item">
+      <span class="ans-num">【3】</span><span class="ans-result">\(x=\dfrac{62}{19},\quad y=\dfrac{3}{19}\)</span>
+      <ul class="ans-steps">
+        <li>①×2：\(4x+6y=14\)</li>
+        <li>②×3：\(15x-6y=48\)　足す：\(19x=62\)</li>
+        <li>\(x=\dfrac{62}{19}\)，①に代入：\(y=\dfrac{3}{19}\)</li>
+      </ul>
+    </div>
+    <div class="ans-item">
+      <span class="ans-num">【4】</span><span class="ans-result">\(x=\dfrac{65}{19},\quad y=-\dfrac{44}{19}\)</span>
+      <ul class="ans-steps">
+        <li>①×3：\(9x+12y=3\)</li>
+        <li>②×2：\(10x-12y=62\)　足す：\(19x=65\)</li>
+        <li>\(x=\dfrac{65}{19}\)，①に代入：\(y=-\dfrac{44}{19}\)</li>
+      </ul>
+    </div>
+    <div class="ans-item">
+      <span class="ans-num">【5】</span><span class="ans-result">\(x=\dfrac{58}{41},\quad y=-\dfrac{15}{41}\)</span>
+      <ul class="ans-steps">
+        <li>①×5：\(35x-15y=55\)</li>
+        <li>②×3：\(6x+15y=3\)　足す：\(41x=58\)</li>
+        <li>\(x=\dfrac{58}{41}\)，①に代入：\(y=-\dfrac{15}{41}\)</li>
+      </ul>
+    </div>
+    <div class="ans-item">
+      <span class="ans-num">【6】</span><span class="ans-result">\(x=\dfrac{68}{31},\quad y=\dfrac{94}{31}\)</span>
+      <ul class="ans-steps">
+        <li>①×5：\(20x+35y=150\)</li>
+        <li>②×7：\(42x-35y=-14\)　足す：\(62x=136\)</li>
+        <li>\(x=\dfrac{68}{31}\)，①に代入：\(y=\dfrac{94}{31}\)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ③ -->
+  <div class="ans-section">③ 小数あり</div>
+  <div class="ans-note">★ 両辺に10または100をかけて整数化してから解く。</div>
+
+  <div class="ans-item">
+    <span class="ans-num">【7】</span><span class="ans-result">\(x=\dfrac{18}{7},\quad y=\dfrac{55}{21}\)</span>
+    <ul class="ans-steps">
+      <li>両辺×10：①\(2x+3y=13\)　②\(5x-3y=5\)</li>
+      <li>①＋②：\(7x=18 \Rightarrow x=\dfrac{18}{7}\)</li>
+      <li>①に代入：\(3y=13-\dfrac{36}{7}=\dfrac{55}{7} \Rightarrow y=\dfrac{55}{21}\)</li>
+    </ul>
+  </div>
+  <div class="ans-item">
+    <span class="ans-num">【8】</span><span class="ans-result">\(x=\dfrac{51}{8},\quad y=\dfrac{15}{4}\)</span>
+    <ul class="ans-steps">
+      <li>両辺×10：①\(4x-2y=18 \Rightarrow 2x-y=9\)　②\(6x+5y=57\)</li>
+      <li>①×5：\(10x-5y=45\)，②足す：\(16x=102 \Rightarrow x=\dfrac{51}{8}\)</li>
+      <li>①に代入：\(y=2x-9=\dfrac{51}{4}-9=\dfrac{15}{4}\)</li>
+    </ul>
+  </div>
+  <div class="ans-item">
+    <span class="ans-num">【9】</span><span class="ans-result">\(x=\dfrac{41}{12},\quad y=\dfrac{77}{15}\)</span>
+    <ul class="ans-steps">
+      <li>両辺×100 → ÷15：①\(8x+5y=53\)　÷5：②\(16x-5y=29\)</li>
+      <li>①＋②：\(24x=82 \Rightarrow x=\dfrac{41}{12}\)</li>
+      <li>①に代入：\(8\times\dfrac{41}{12}=\dfrac{82}{3}\)，\(5y=53-\dfrac{82}{3}=\dfrac{77}{3} \Rightarrow y=\dfrac{77}{15}\)</li>
+    </ul>
+  </div>
+</div><!-- /page5 -->
+
+
+<!-- ============================================================
+     PAGE 6: 解答・解説 ④⑤
+     ============================================================ -->
+<div class="page">
+  <!-- ④ -->
+  <div class="ans-section">④ 分数あり</div>
+  <div class="ans-note">★ 分母の最小公倍数を両辺にかけて分数を消してから解く。</div>
+
+  <div class="ans-item">
+    <span class="ans-num">【10】</span><span class="ans-result">\(x=4,\quad y=6\)</span>
+    <ul class="ans-steps">
+      <li>①×6：\(3x+2y=24\)　②×6：\(3x-y=6\)</li>
+      <li>①－②：\(3y=18 \Rightarrow y=6\)</li>
+      <li>②に代入：\(3x=12 \Rightarrow x=4\)</li>
+    </ul>
+  </div>
+  <div class="ans-item">
+    <span class="ans-num">【11】</span><span class="ans-result">\(x=\dfrac{24}{5},\quad y=\dfrac{36}{5}\)</span>
+    <ul class="ans-steps">
+      <li>①×12：\(8x+3y=60\)　②×12：\(2x-3y=-12\)</li>
+      <li>①＋②：\(10x=48 \Rightarrow x=\dfrac{24}{5}\)</li>
+      <li>②に代入：\(\dfrac{48}{5}-3y=-12 \Rightarrow 3y=\dfrac{108}{5} \Rightarrow y=\dfrac{36}{5}\)</li>
+    </ul>
+  </div>
+  <div class="ans-item">
+    <span class="ans-num">【12】</span><span class="ans-result">\(x=15,\quad y=6\)</span>
+    <ul class="ans-steps">
+      <li>①×10：\(2x+5y=60\)　②×15：\(3x-5y=15\)</li>
+      <li>①＋②：\(5x=75 \Rightarrow x=15\)</li>
+      <li>①に代入：\(30+5y=60 \Rightarrow 5y=30 \Rightarrow y=6\)</li>
+    </ul>
+  </div>
+
+  <hr class="rule-thin">
+
+  <!-- ⑤ -->
+  <div class="ans-section">⑤ ちょい難</div>
+  <div class="ans-grid">
+    <div class="ans-item">
+      <span class="ans-num">【13】</span><span class="ans-result">\(x=\dfrac{200}{71},\quad y=-\dfrac{153}{71}\)</span>
+      <ul class="ans-steps">
+        <li>①×7：\(56x-21y=203\)</li>
+        <li>②×3：\(15x+21y=-3\)　足す：\(71x=200\)</li>
+        <li>\(x=\dfrac{200}{71}\)，②に代入：\(y=-\dfrac{153}{71}\)</li>
+      </ul>
+    </div>
+    <div class="ans-item">
+      <span class="ans-num">【14】</span><span class="ans-result">\(x=\dfrac{255}{73},\quad y=-\dfrac{446}{73}\)</span>
+      <ul class="ans-steps">
+        <li>①×5：\(45x+20y=35\)</li>
+        <li>②×4：\(28x-20y=220\)　足す：\(73x=255\)</li>
+        <li>\(x=\dfrac{255}{73}\)，②に代入：\(y=-\dfrac{446}{73}\)</li>
+      </ul>
+    </div>
+    <div class="ans-item">
+      <span class="ans-num">【15】</span><span class="ans-result">\(x=\dfrac{454}{143},\quad y=\dfrac{431}{143}\)</span>
+      <ul class="ans-steps">
+        <li>①×9：\(108x-63y=153\)</li>
+        <li>②×7：\(35x+63y=301\)　足す：\(143x=454\)</li>
+        <li>\(x=\dfrac{454}{143}\)，①に代入：\(y=\dfrac{431}{143}\)</li>
+      </ul>
+    </div>
+  </div>
+</div><!-- /page6 -->
+
+
+<!-- ============================================================
+     PAGE 7: 解答・解説 ⑥ (16〜21)
+     ============================================================ -->
+<div class="page">
+  <div class="ans-section">⑥ 総合ハイレベル</div>
+  <div class="ans-note">★ 整理の手順：展開 → 整数化 → 整理 → 消去法</div>
+
+  <div class="ans-item">
+    <span class="ans-num">【16】</span><span class="ans-result">\(x=-\dfrac{1}{4},\quad y=3\)</span>
+    <ul class="ans-steps">
+      <li>①展開：\(1.2x+0.4-0.4x-0.2y=-0.4 \Rightarrow 0.8x-0.2y=-0.8\)　×5：\(4x-y=-4\)</li>
+      <li>②展開：\(1.2x-1.5+1.5y-5.5=-2.8 \Rightarrow 1.2x+1.5y=4.2\)　×\(\dfrac{10}{3}\)：\(4x+5y=14\)</li>
+      <li>②－①：\(6y=18 \Rightarrow y=3\)</li>
+      <li>①に代入：\(4x-3=-4 \Rightarrow 4x=-1 \Rightarrow x=-\dfrac{1}{4}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【17】</span><span class="ans-result">\(x=\dfrac{99}{13},\quad y=\dfrac{12}{13}\)</span>
+    <ul class="ans-steps">
+      <li>①展開：\(6x-2y-5=4x+8y+1 \Rightarrow 2x-10y=6 \Rightarrow x-5y=3\quad\cdots(A)\)</li>
+      <li>②展開：\(6x+3y-7=5x-5y+8 \Rightarrow x+8y=15\quad\cdots(B)\)</li>
+      <li>\((B)-(A)\)：\(13y=12 \Rightarrow y=\dfrac{12}{13}\)，代入：\(x=3+\dfrac{60}{13}=\dfrac{99}{13}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【18】</span><span class="ans-result">\(x=\dfrac{47}{10},\quad y=-\dfrac{6}{5}\)</span>
+    <ul class="ans-steps">
+      <li>①×4：\((2x-3y)+2(x+y)=20 \Rightarrow 4x-y=20\quad\cdots(A)\)</li>
+      <li>②×6：\(2(x-2y)-(2x+y)=6 \Rightarrow -5y=6 \Rightarrow y=-\dfrac{6}{5}\)</li>
+      <li>\((A)\)に代入：\(4x=20+y=20-\dfrac{6}{5}=\dfrac{94}{5} \Rightarrow x=\dfrac{47}{10}\)</li>
+    </ul>
+  </div>
+  
+    <div class="ans-item">
+    <span class="ans-num">【19】</span><span class="ans-result">\(x=\dfrac{51}{31},\quad y=\dfrac{38}{31}\)</span>
+    <ul class="ans-steps">
+      <li>①整理：\(0.6x-1.5y+1.2=0.4x+0.4y-0.8 \Rightarrow 0.2x-1.9y=-2.0\)　×10：\(2x-19y=-20\quad\cdots(A)\)</li>
+      <li>②整理：\(1.5x+0.5y-2.1=0.8x-0.6y+0.4 \Rightarrow 0.7x+1.1y=2.5\)　×10：\(7x+11y=25\quad\cdots(B)\)</li>
+      <li>\((A)\times7-(B)\times2\)：\(14x-133y-14x-22y=-140-50 \Rightarrow -155y=-190 \Rightarrow y=\dfrac{38}{31}\)</li>
+      <li>\((A)\)に代入：\(2x=-20+19\times\dfrac{38}{31}=\dfrac{102}{31} \Rightarrow x=\dfrac{51}{31}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【20】</span><span class="ans-result">\(x=\dfrac{148}{45},\quad y=\dfrac{101}{45}\)</span>
+    <ul class="ans-steps">
+      <li>①×4：\(3(2x-y)-5=8 \Rightarrow 6x-3y=13\quad\cdots(A)\)</li>
+      <li>②×6：\(2(2(x+y)+1)=3(x-y+7) \Rightarrow 4x+4y+2=3x-3y+21 \Rightarrow x+7y=19\quad\cdots(B)\)</li>
+      <li>\((B)\times6\)：\(6x+42y=114\)，\((B)\times6-(A)\)：\(45y=101 \Rightarrow y=\dfrac{101}{45}\)</li>
+      <li>\((B)\)に代入：\(x=19-7\times\dfrac{101}{45}=\dfrac{855-707}{45}=\dfrac{148}{45}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【21】</span><span class="ans-result">\(x=\dfrac{333}{109},\quad y=\dfrac{90}{109}\)</span>
+    <ul class="ans-steps">
+      <li>①整理：\(\left(x-0.6y\right)+\left(\dfrac{x}{2}+\dfrac{y}{2}\right)=4.5\)　×10：\(15x-y=45\quad\cdots(A)\)</li>
+      <li>②整理：\(\dfrac{2x-y}{3}-0.4x+0.8y=1.2\)　×15：\(5(2x-y)-6x+12y=18 \Rightarrow 4x+7y=18\quad\cdots(B)\)</li>
+      <li>\((A)\times7+(B)\)：\(105x-7y+4x+7y=315+18 \Rightarrow 109x=333 \Rightarrow x=\dfrac{333}{109}\)</li>
+      <li>\((A)\)に代入：\(y=15\times\dfrac{333}{109}-45=\dfrac{4995-4905}{109}=\dfrac{90}{109}\)</li>
+    </ul>
+  </div>
+
+</div><!-- /page7 -->
+
+
+<!-- ============================================================
+     PAGE 8: 解答・解説 ⑥ (22〜27)
+     ============================================================ -->
+<div class="page">
+  <div class="ans-section">⑥ 総合ハイレベル（続き）</div>
+
+
+  <div class="ans-item">
+    <span class="ans-num">【22】</span><span class="ans-result">\(x=\dfrac{79}{37},\quad y=\dfrac{56}{37}\)</span>
+    <ul class="ans-steps">
+      <li>①整理：\(1.2x-1.5y+1.7=x+0.5y-0.9 \Rightarrow 0.2x-2y=-2.6\)　×10：\(2x-20y=-26\quad\cdots(A)\)</li>
+      <li>②整理：\(x+0.2y-1.1=0.4x-1.2y+2.3 \Rightarrow 0.6x+1.4y=3.4\)　×10：\(6x+14y=34\quad\cdots(B)\)</li>
+      <li>\((A)\times3-(B)\)：\(6x-60y-6x-14y=-78-34 \Rightarrow -74y=-112 \Rightarrow y=\dfrac{56}{37}\)</li>
+      <li>\((A)\)に代入：\(2x-20\times\dfrac{56}{37}=-26 \Rightarrow 2x=\dfrac{158}{37} \Rightarrow x=\dfrac{79}{37}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【23】</span><span class="ans-result">\(x=\dfrac{39}{7},\quad y=\dfrac{9}{14}\)</span>
+    <ul class="ans-steps">
+      <li>①を12倍：\(4(2x+y)+3(x-2y)=60 \Rightarrow 11x-2y=60\quad\cdots(A)\)</li>
+      <li>②を6倍：\(3(3x-y)-(x+y)=42 \Rightarrow 8x-4y=42\quad\cdots(B)\)</li>
+      <li>\((A)\times2-(B)\)：\(22x-4y-8x+4y=120-42 \Rightarrow 14x=78 \Rightarrow x=\dfrac{39}{7}\)</li>
+      <li>\((A)\)に代入：\(11\times\dfrac{39}{7}-2y=60 \Rightarrow -2y=-\dfrac97 \Rightarrow y=\dfrac{9}{14}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【24】</span><span class="ans-result">\(x=\dfrac{128}{183},\quad y=-\dfrac{92}{61}\)</span>
+    <ul class="ans-steps">
+      <li>①整理：\(1.5x-y-0.3x-0.3y=2.8 \Rightarrow 1.2x-1.3y=2.8\)　×10：\(12x-13y=28\quad\cdots(A)\)</li>
+      <li>②整理：\(0.8x+0.2y+1.6=0.5x-y \Rightarrow 0.3x+1.2y=-1.6\)　×10：\(3x+12y=-16\quad\cdots(B)\)</li>
+      <li>\((A)\times4-(B)\times16\)：\(48x-52y-48x-192y=112+256 \Rightarrow -244y=368 \Rightarrow y=-\dfrac{92}{61}\)</li>
+      <li>\((B)\)に代入：\(3x+12\times\left(-\dfrac{92}{61}\right)=-16 \Rightarrow 3x=\dfrac{128}{61} \Rightarrow x=\dfrac{128}{183}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【25】</span><span class="ans-result">\(x=\dfrac{152}{49},\quad y=\dfrac{79}{98}\)</span>
+    <ul class="ans-steps">
+      <li>①を4倍：\(2(3x-y)-5=12 \Rightarrow 6x-2y=17\quad\cdots(A)\)</li>
+      <li>②を10倍：\(2(3x+3y+2)=5(x-2y+4)\)</li>
+      <li>整理して：\(6x+6y+4=5x-10y+20 \Rightarrow x+16y=16\quad\cdots(B)\)</li>
+      <li>\((B)\times6-(A)\)：\(6x+96y-6x+2y=96-17 \Rightarrow 98y=79 \Rightarrow y=\dfrac{79}{98}\)</li>
+      <li>\((B)\)に代入：\(x+16\times\dfrac{79}{98}=16 \Rightarrow x=\dfrac{152}{49}\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【26】</span><span class="ans-result">\(x=4,\quad y=\dfrac32\)</span>
+    <ul class="ans-steps">
+      <li>①を15倍：\(6x+5y=31.5\quad\cdots(A)\)</li>
+      <li>②を10倍：\(5x-2y=17\quad\cdots(B)\)</li>
+      <li>\((A)\times2+(B)\times5\)：\(12x+10y+25x-10y=63+85 \Rightarrow 37x=148 \Rightarrow x=4\)</li>
+      <li>\((B)\)に代入：\(20-2y=17 \Rightarrow y=\dfrac32\)</li>
+    </ul>
+  </div>
+
+  <div class="ans-item">
+    <span class="ans-num">【27】</span><span class="ans-result">\(x=\dfrac{215}{83},\quad y=\dfrac{167}{415}\)</span>
+    <ul class="ans-steps">
+      <li>①整理：\(0.6x-y+\dfrac{x+y}{4}=1.9\)</li>
+      <li>両辺を20倍：\(12x-20y+5x+5y=38\)</li>
+      <li>整理して：\(17x-15y=38\quad\cdots(A)\)</li>
+      <li>②整理：\(\dfrac{2x-y}{3}-0.5x+y=0.7\)</li>
+      <li>両辺を6倍：\(2(2x-y)-3x+6y=4.2\)</li>
+      <li>整理して：\(x+4y=4.2\)　×10：\(10x+40y=42\quad\cdots(B)\)</li>
+      <li>\((A)\times10-(B)\times17\)：\(170x-150y-170x-680y=380-714\)</li>
+      <li>\(-830y=-334 \Rightarrow y=\dfrac{167}{415}\)</li>
+      <li>\((B)\)に代入：\(10x+40\times\dfrac{167}{415}=42 \Rightarrow x=\dfrac{215}{83}\)</li>
+    </ul>
+  </div>
+</div><!-- /page8 -->
+
+
+<script>
+  // Render all LaTeX with KaTeX
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "\\(", right: "\\)", display: false},
+        {left: "\\[", right: "\\]", display: true},
+      ],
+      throwOnError: false,
+      strict: false,
+    });
+  });
+</script>
+
+</body>
+</html>
