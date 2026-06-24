@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>連立方程式 足場プリント【文章題編】</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: white;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 15mm 18mm;
+  }
+  .header {
+    border-bottom: 2.5px solid #1a1a1a;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-left h1 { font-size: 15pt; font-weight: 700; }
+  .header-left p { font-size: 9pt; color: #444; margin-top: 2px; }
+  .header-right { font-size: 9pt; text-align: right; color: #333; line-height: 1.9; }
+  .header-right span { display: inline-block; border-bottom: 1px solid #555; min-width: 60px; margin-left: 4px; }
+
+  .intro-box {
+    background: #f5f5f5;
+    border-left: 4px solid #1a1a1a;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    font-size: 10pt;
+  }
+
+  .problem-block {
+    border: 1.5px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .problem-header {
+    background: #1a1a1a;
+    color: white;
+    padding: 5px 12px;
+    font-size: 10pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .problem-header .num { font-size: 13pt; }
+  .problem-body { padding: 10px 14px; }
+
+  .problem-text {
+    font-size: 10.5pt;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+  }
+
+  .first-step {
+    background: #fff8e1;
+    border: 1px solid #f0c040;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 10pt;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #5a4000;
+  }
+  .first-step::before { content: "👉 "; }
+
+  .hint-box {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 9.5pt;
+    margin: 6px 0;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .step { display: flex; align-items: flex-start; gap: 8px; }
+  .step-label {
+    background: #1a1a1a;
+    color: white;
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .step-content { font-size: 10pt; flex: 1; }
+
+  .blank { display: inline-block; border-bottom: 1.5px solid #1a1a1a; min-width: 50px; margin: 0 3px; vertical-align: bottom; }
+  .blank-s { min-width: 28px; }
+  .blank-m { min-width: 60px; }
+  .blank-l { min-width: 90px; }
+
+  /* 表 */
+  table {
+    border-collapse: collapse;
+    margin: 8px 0;
+    font-size: 10pt;
+    width: 100%;
+  }
+  th, td {
+    border: 1.5px solid #555;
+    padding: 6px 10px;
+    text-align: center;
+  }
+  th { background: #e8e8e8; font-weight: 700; }
+  td.blank-cell { background: #fffde7; min-width: 60px; }
+  td.fill-hint { color: #777; font-size: 9pt; }
+
+  /* 式を作る枠 */
+  .equation-box {
+    border: 1.5px solid #aaa;
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin: 6px 0;
+    background: #fafafa;
+    font-size: 10.5pt;
+  }
+
+  .calc-area {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 8px;
+    padding: 8px;
+    min-height: 55px;
+    background: #fafafa;
+  }
+  .calc-area-label { font-size: 8pt; color: #777; margin-bottom: 4px; }
+  .calc-lines { display: flex; flex-direction: column; gap: 18px; }
+  .calc-line { border-bottom: 1px dashed #ccc; min-height: 18px; }
+
+  .answer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+    font-size: 10.5pt;
+  }
+  .answer-label { font-weight: 700; white-space: nowrap; }
+  .answer-blank { display: inline-block; border-bottom: 1.5px solid #1a1a1a; min-width: 80px; margin: 0 6px; vertical-align: bottom; }
+
+  .check-points {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    font-size: 9pt;
+  }
+  .check-points p { font-weight: 700; margin-bottom: 4px; color: #2e7d32; }
+  .check-list { display: flex; gap: 12px; flex-wrap: wrap; }
+  .check-item { display: flex; align-items: center; gap: 4px; }
+  .check-box { display: inline-block; width: 14px; height: 14px; border: 1.5px solid #2e7d32; border-radius: 2px; flex-shrink: 0; }
+
+  .formula-confirm {
+    background: #fce4ec;
+    border: 1px solid #f48fb1;
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #880e4f;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; padding: 12mm 15mm; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-left">
+      <h1>連立方程式 足場プリント【文章題編】</h1>
+      <p>2章 連立方程式の利用 ／ Type A</p>
+    </div>
+    <div class="header-right">
+      名前 <span style="min-width:90px"></span><br>
+      組 <span style="min-width:30px"></span> 番 <span style="min-width:30px"></span>
+    </div>
+  </div>
+
+  <div class="intro-box">
+    文章題は「文字を置く→表を作る→式を作る→解く→確認する」の順で進めよう。<br>
+    わからなくなったら先生や友達に聞いてOK！
+  </div>
+
+  <!-- 問題⑦ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">⑦</span> 個数と代金
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        りんご3個とみかん2個の代金は510円、りんご1個とみかん3個の代金は380円です。<br>
+        りんご1個とみかん1個の値段をそれぞれ求めなさい。
+      </div>
+
+      <div class="first-step">まず何を x、y と置くか決めよう。</div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            文字を置こう。<br>
+            りんご1個の値段を <strong>x 円</strong>、みかん1個の値段を <strong>y 円</strong> とする。
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            表を完成させよう。
+            <table>
+              <tr>
+                <th></th>
+                <th>りんご</th>
+                <th>みかん</th>
+                <th>合計</th>
+              </tr>
+              <tr>
+                <th>1個の値段</th>
+                <td>x 円</td>
+                <td>y 円</td>
+                <td>―</td>
+              </tr>
+              <tr>
+                <th>1回目の買い物</th>
+                <td class="blank-cell">（　　）円</td>
+                <td class="blank-cell">（　　）円</td>
+                <td>510円</td>
+              </tr>
+              <tr>
+                <th>2回目の買い物</th>
+                <td class="blank-cell">（　　）円</td>
+                <td class="blank-cell">（　　）円</td>
+                <td>380円</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            式を作ろう。
+            <div class="equation-box">
+              　3x ＋ <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…①<br>
+              　<span class="blank-s"></span>x ＋ 3y ＝ <span class="blank-s"></span>　　…②
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 4</span>
+          <div class="step-content">
+            連立方程式を解こう。
+            <div class="calc-area">
+              <div class="calc-area-label">計算欄</div>
+              <div class="calc-lines">
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 5</span>
+          <div class="step-content">
+            答えを確認しよう。<br>
+            りんご3個＋みかん2個 ＝ 3×<span class="blank-s"></span>＋2×<span class="blank-s"></span>＝<span class="blank-s"></span>円　→ 510円と合ってる？（　）
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        りんご1個 <span class="answer-blank"></span> 円　　みかん1個 <span class="answer-blank"></span> 円
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 文字を置けた</div>
+          <div class="check-item"><span class="check-box"></span> 表を埋められた</div>
+          <div class="check-item"><span class="check-box"></span> 式を2つ作れた</div>
+          <div class="check-item"><span class="check-box"></span> 答えを確認できた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題⑧ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">⑧</span> 速さ
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        家から公園まで1200mの道のりがあります。行きは分速80mで歩き、帰りは分速120mで走って戻ったところ、往復で25分かかりました。行きと帰りにそれぞれかかった時間を求めなさい。
+      </div>
+
+      <div class="first-step">まず何を x、y と置くか決めよう。</div>
+
+      <div class="formula-confirm">
+        公式の確認：道のり ＝ 速さ × 時間　　つまり　時間 ＝ 道のり ÷ 速さ
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            文字を置こう。<br>
+            行きにかかった時間を <strong>x 分</strong>、帰りにかかった時間を <strong>y 分</strong> とする。
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            表を完成させよう。
+            <table>
+              <tr>
+                <th></th>
+                <th>速さ（分速）</th>
+                <th>時間</th>
+                <th>道のり</th>
+              </tr>
+              <tr>
+                <th>行き</th>
+                <td>80m</td>
+                <td>x 分</td>
+                <td class="blank-cell">（　　）m</td>
+              </tr>
+              <tr>
+                <th>帰り</th>
+                <td>120m</td>
+                <td>y 分</td>
+                <td class="blank-cell">（　　）m</td>
+              </tr>
+              <tr>
+                <th>合計</th>
+                <td>―</td>
+                <td class="blank-cell">（　　）分</td>
+                <td>2400m</td>
+              </tr>
+            </table>
+            <div class="hint-box">💡 往復なので道のりの合計は 1200×2＝2400m だよ。</div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            式を作ろう。（時間の式と道のりの式）
+            <div class="equation-box">
+              　x ＋ y ＝ <span class="blank-s"></span>　　…①（時間の合計）<br>
+              　80x ＋ <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…②（道のりの合計）
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 4</span>
+          <div class="step-content">
+            連立方程式を解こう。
+            <div class="calc-area">
+              <div class="calc-area-label">計算欄</div>
+              <div class="calc-lines">
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 5</span>
+          <div class="step-content">
+            答えを確認しよう。<br>
+            行き：80×<span class="blank-s"></span>＝<span class="blank-s"></span>m　帰り：120×<span class="blank-s"></span>＝<span class="blank-s"></span>m　→ 合計1200mずつ合ってる？（　）
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        行き <span class="answer-blank"></span> 分　　帰り <span class="answer-blank"></span> 分
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 道のり＝速さ×時間を使えた</div>
+          <div class="check-item"><span class="check-box"></span> 表を埋められた</div>
+          <div class="check-item"><span class="check-box"></span> 式を2つ作れた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題⑨ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">⑨</span> 利益
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        あなたは店主です。商品Aを1個、商品Bを2個、合計2000円で仕入れました。商品Bを赤字覚悟の10%引きで販売する代わりに、商品Aを20%の利益で販売する戦略を立てたところ、全体で100円の利益が出ました。それぞれの仕入れ値を求めなさい。
+      </div>
+
+      <div class="first-step">まず「利益＝売値－仕入れ値」を確認しよう。</div>
+
+      <div class="formula-confirm">
+        公式の確認：利益 ＝ 売値 － 仕入れ値<br>
+        20%の利益 → 売値 ＝ 仕入れ値 × 1.2　　10%引き → 売値 ＝ 仕入れ値 × 0.9
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            文字を置こう。<br>
+            商品Aの仕入れ値を <strong>a 円</strong>、商品Bの仕入れ値を <strong>b 円</strong> とする。
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            表を完成させよう。
+            <table>
+              <tr>
+                <th></th>
+                <th>商品A（1個）</th>
+                <th>商品B（2個）</th>
+                <th>合計</th>
+              </tr>
+              <tr>
+                <th>仕入れ値</th>
+                <td>a 円</td>
+                <td>2b 円</td>
+                <td>2000円</td>
+              </tr>
+              <tr>
+                <th>売値</th>
+                <td class="blank-cell">1.2a 円</td>
+                <td class="blank-cell">（　　）円</td>
+                <td>―</td>
+              </tr>
+              <tr>
+                <th>利益</th>
+                <td class="blank-cell">（　　）円</td>
+                <td class="blank-cell">（　　）円</td>
+                <td>100円</td>
+              </tr>
+            </table>
+            <div class="hint-box">
+              💡 商品Aの利益：1.2a－a＝0.2a　　商品Bの利益（損失）：0.9×2b－2b＝－0.2b
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            式を作ろう。
+            <div class="equation-box">
+              　a ＋ 2b ＝ <span class="blank-s"></span>　　…①（仕入れの合計）<br>
+              　0.2a － 0.2b ＝ <span class="blank-s"></span>　　…②（利益の合計）
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 4</span>
+          <div class="step-content">
+            ②を整理して（両辺を5倍すると）、連立して解こう。
+            <div class="calc-area">
+              <div class="calc-area-label">計算欄</div>
+              <div class="calc-lines">
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        商品A <span class="answer-blank"></span> 円　　商品B <span class="answer-blank"></span> 円
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 利益の公式を使えた</div>
+          <div class="check-item"><span class="check-box"></span> 表を埋められた</div>
+          <div class="check-item"><span class="check-box"></span> 式を2つ作れた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題⑩ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">⑩</span> 整数（十の位・一の位）
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        0〜9の数字が書かれた10枚のカードがあり、その中から無作為に2枚を並べて、2桁の整数を作りました。このとき十の位のカードの数字は、一の位のカードの数字の2倍でした。また、この2枚のカードを入れ替えてできる2桁の整数は、元の整数より36小さくなりました。このとき、元の整数を求めなさい。
+      </div>
+
+      <div class="first-step">まず十の位と一の位を文字で表そう。</div>
+
+      <div class="formula-confirm">
+        確認：十の位が a、一の位が b の2桁の整数 → <strong>10a ＋ b</strong>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            文字を置こう。<br>
+            十の位の数字を <strong>a</strong>、一の位の数字を <strong>b</strong> とする。<br>
+            → 元の整数は <strong>10a ＋ b</strong>、入れ替えた整数は <strong><span class="blank-s"></span>b ＋ <span class="blank-s"></span></strong>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            条件を式にしよう。
+            <div class="equation-box">
+              　条件1「十の位は一の位の2倍」：a ＝ <span class="blank-m"></span>　　…①<br>
+              　条件2「入れ替えると36小さい」：(10a＋b) － (10b＋a) ＝ <span class="blank-s"></span>　　…②
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            ②を整理しよう。<br>
+            10a＋b－10b－a ＝ 36　→　<span class="blank-s"></span>a－<span class="blank-s"></span>b ＝ 36　→　a－b ＝ <span class="blank-s"></span>　　…②'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 4</span>
+          <div class="step-content">
+            ①と②'を連立して解こう。
+            <div class="calc-area">
+              <div class="calc-area-label">計算欄</div>
+              <div class="calc-lines">
+                <div class="calc-line"></div>
+                <div class="calc-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 5</span>
+          <div class="step-content">
+            元の整数を答えよう。<br>
+            a ＝<span class="blank-s"></span>、b ＝<span class="blank-s"></span>　→　元の整数 ＝ 10×<span class="blank-s"></span>＋<span class="blank-s"></span>＝ <strong><span class="blank-s"></span></strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        元の整数は <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 2桁の整数を10a＋bで表せた</div>
+          <div class="check-item"><span class="check-box"></span> 条件を2つの式にできた</div>
+          <div class="check-item"><span class="check-box"></span> 元の整数を求められた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

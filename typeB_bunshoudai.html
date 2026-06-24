@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>連立方程式 演習プリント【文章題編】</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Noto Sans JP','Hiragino Sans',sans-serif; font-size:11pt; line-height:1.7; color:#1a1a1a; background:white; }
+  .page { width:210mm; min-height:297mm; margin:0 auto; padding:14mm 18mm; }
+  .header { border-bottom:2.5px solid #1a1a1a; padding-bottom:6px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .header-left h1 { font-size:15pt; font-weight:700; }
+  .header-left p { font-size:9pt; color:#444; margin-top:2px; }
+  .header-right { font-size:9pt; text-align:right; color:#333; line-height:1.9; }
+  .header-right span { display:inline-block; border-bottom:1px solid #555; min-width:60px; margin-left:4px; }
+  .intro-box { background:#f5f5f5; border-left:4px solid #1a1a1a; padding:7px 12px; margin-bottom:14px; font-size:10pt; }
+  .section-header { background:#1a1a1a; color:white; padding:5px 12px; font-size:10.5pt; font-weight:700; margin-bottom:8px; border-radius:3px; display:flex; align-items:center; gap:10px; }
+  .section-num { font-size:13pt; }
+  .problem-block { border:1.5px solid #ccc; border-radius:4px; margin-bottom:14px; overflow:hidden; }
+  .problem-pair { display:grid; grid-template-columns:1fr 1fr; gap:0; margin-bottom:14px; border:1.5px solid #ccc; border-radius:4px; overflow:hidden; }
+  .problem-col { padding:10px 12px; }
+  .problem-col:first-child { border-right:1px solid #ccc; }
+  .col-header { font-size:9pt; font-weight:700; background:#f0f0f0; margin:-10px -12px 8px -12px; padding:4px 12px; border-bottom:1px solid #ccc; }
+  .problem-text { font-size:10pt; line-height:1.75; margin-bottom:8px; }
+  .var-set { font-size:10pt; margin-bottom:6px; padding:5px 8px; background:#f9f9f9; border:1px solid #ddd; border-radius:3px; }
+  table { border-collapse:collapse; width:100%; font-size:9.5pt; margin:6px 0; }
+  th,td { border:1.5px solid #666; padding:5px 7px; text-align:center; }
+  th { background:#e8e8e8; font-weight:700; }
+  td.blank-cell { background:#fffde7; }
+  .eq-box { border:1.5px solid #aaa; border-radius:3px; padding:6px 10px; background:#fafafa; font-size:10.5pt; margin:6px 0; }
+  .blank { display:inline-block; border-bottom:1.5px solid #1a1a1a; min-width:45px; margin:0 2px; vertical-align:bottom; }
+  .calc-space { border:1px solid #ccc; background:#fafafa; border-radius:3px; padding:6px 8px; min-height:65px; margin-top:6px; }
+  .calc-space-label { font-size:8pt; color:#888; margin-bottom:4px; }
+  .calc-lines { display:flex; flex-direction:column; gap:17px; }
+  .calc-line { border-bottom:1px dashed #ddd; }
+  .answer-row { display:flex; align-items:center; gap:6px; margin-top:8px; padding-top:6px; border-top:1px solid #eee; font-size:10pt; flex-wrap:wrap; }
+  .answer-blank { display:inline-block; border-bottom:1.5px solid #1a1a1a; min-width:70px; margin:0 4px; vertical-align:bottom; }
+  .hint { background:#e3f2fd; border:1px solid #90caf9; border-radius:3px; padding:4px 8px; font-size:9pt; margin:4px 0; }
+  @media print { body{background:white;} .page{margin:0;padding:10mm 14mm;} }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-left">
+      <h1>連立方程式 演習プリント【文章題編】</h1>
+      <p>2章 連立方程式の利用 ／ Type B</p>
+    </div>
+    <div class="header-right">
+      名前 <span style="min-width:90px"></span><br>
+      組 <span style="min-width:30px"></span> 番 <span style="min-width:30px"></span>
+    </div>
+  </div>
+  <div class="intro-box">文章題は「文字を置く→式を作る→解く→確認」の順で。何をxやyと置くかを最初に書こう。</div>
+
+  <!-- ⑦ 個数と代金 -->
+  <div class="section-header"><span class="section-num">⑦</span> 個数と代金</div>
+  <div class="problem-pair">
+    <div class="problem-col">
+      <div class="col-header">問1（確認テスト同型）</div>
+      <div class="problem-text">りんご3個とみかん2個の代金は510円、りんご1個とみかん3個の代金は380円です。それぞれ1個の値段を求めなさい。</div>
+      <div class="var-set">りんご1個：x円、みかん1個：y円 とする</div>
+      <div class="eq-box">
+        　<span class="blank"></span>x ＋ <span class="blank"></span>y ＝ <span class="blank"></span>　…①<br>
+        　<span class="blank"></span>x ＋ <span class="blank"></span>y ＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">りんご<span class="answer-blank"></span>円　みかん<span class="answer-blank"></span>円</div>
+    </div>
+    <div class="problem-col">
+      <div class="col-header">問2（状況を変えた類題）</div>
+      <div class="problem-text">大人2人と子ども3人の入場料は合計2900円、大人1人と子ども4人の入場料は合計2200円です。大人と子どもそれぞれの入場料を求めなさい。</div>
+      <div class="var-set">大人1人：<span class="blank"></span>円、子ども1人：<span class="blank"></span>円 とする</div>
+      <div class="eq-box">
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…①<br>
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">大人<span class="answer-blank"></span>円　子ども<span class="answer-blank"></span>円</div>
+    </div>
+  </div>
+
+  <!-- ⑧ 速さ -->
+  <div class="section-header"><span class="section-num">⑧</span> 速さ（道のり＝速さ×時間）</div>
+  <div class="problem-pair">
+    <div class="problem-col">
+      <div class="col-header">問1（確認テスト同型）</div>
+      <div class="problem-text">家から公園まで1200mの道のりがあります。行きは分速80mで歩き、帰りは分速120mで走って、往復で25分かかりました。行きと帰りにかかった時間を求めなさい。</div>
+      <div class="var-set">行き：x分、帰り：y分 とする</div>
+      <div class="hint">💡 往復の道のり合計は1200×2＝2400m</div>
+      <div class="eq-box">
+        　x ＋ y ＝ <span class="blank"></span>　…①（時間）<br>
+        　80x ＋ <span class="blank"></span>y ＝ <span class="blank"></span>　…②（道のり）
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">行き<span class="answer-blank"></span>分　帰り<span class="answer-blank"></span>分</div>
+    </div>
+    <div class="problem-col">
+      <div class="col-header">問2（状況を変えた類題）</div>
+      <div class="problem-text">A地点からB地点まで20kmあります。自転車（時速15km）と徒歩（時速5km）を合わせて2時間かかりました。自転車と徒歩でそれぞれかかった時間を求めなさい。</div>
+      <div class="var-set">自転車：<span class="blank"></span>時間、徒歩：<span class="blank"></span>時間 とする</div>
+      <div class="eq-box">
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…①<br>
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">自転車<span class="answer-blank"></span>時間　徒歩<span class="answer-blank"></span>時間</div>
+    </div>
+  </div>
+
+  <!-- ⑨ 利益 -->
+  <div class="section-header"><span class="section-num">⑨</span> 利益（利益＝売値－仕入れ値）</div>
+  <div class="problem-pair">
+    <div class="problem-col">
+      <div class="col-header">問1（確認テスト同型）</div>
+      <div class="problem-text">商品Aを1個、商品Bを2個、合計2000円で仕入れました。商品Aを20%の利益で、商品Bを10%引きで販売したところ、全体で100円の利益が出ました。それぞれの仕入れ値を求めなさい。</div>
+      <div class="var-set">商品A：a円、商品B：b円 とする</div>
+      <div class="eq-box">
+        　a ＋ 2b ＝ <span class="blank"></span>　…①<br>
+        　0.2a － 0.2b ＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">商品A<span class="answer-blank"></span>円　商品B<span class="answer-blank"></span>円</div>
+    </div>
+    <div class="problem-col">
+      <div class="col-header">問2（状況を変えた類題）</div>
+      <div class="problem-text">商品Cを2個、商品Dを1個、合計2500円で仕入れました。商品Cを20%の利益で、商品Dを10%引きで販売したところ、全体で200円の利益が出ました。それぞれの仕入れ値を求めなさい。</div>
+      <div class="var-set">商品C：<span class="blank"></span>円、商品D：<span class="blank"></span>円 とする</div>
+      <div class="eq-box">
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…①<br>
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">商品C<span class="answer-blank"></span>円　商品D<span class="answer-blank"></span>円</div>
+    </div>
+  </div>
+
+  <!-- ⑩ 整数 -->
+  <div class="section-header"><span class="section-num">⑩</span> 整数（十の位・一の位）</div>
+  <div class="problem-pair">
+    <div class="problem-col">
+      <div class="col-header">問1（確認テスト同型）</div>
+      <div class="problem-text">2桁の整数があります。十の位の数字は一の位の数字の2倍で、2枚のカードを入れ替えてできる整数は元の整数より36小さくなります。元の整数を求めなさい。</div>
+      <div class="var-set">十の位：a、一の位：b とする</div>
+      <div class="eq-box">
+        　a ＝ <span class="blank"></span>　…①<br>
+        　(10a＋b)−(10b＋a) ＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">元の整数<span class="answer-blank"></span></div>
+    </div>
+    <div class="problem-col">
+      <div class="col-header">問2（状況を変えた類題）</div>
+      <div class="problem-text">2桁の整数があります。十の位と一の位の数字の和は12で、十の位と一の位を入れ替えた整数は元の整数より18大きくなります。元の整数を求めなさい。</div>
+      <div class="var-set">十の位：<span class="blank"></span>、一の位：<span class="blank"></span> とする</div>
+      <div class="eq-box">
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…①<br>
+        　<span class="blank"></span>　＝ <span class="blank"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">元の整数<span class="answer-blank"></span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

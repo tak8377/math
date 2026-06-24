@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>連立方程式 足場プリント【技法編】</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: white;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 15mm 18mm 15mm 18mm;
+  }
+
+  /* ヘッダー */
+  .header {
+    border-bottom: 2.5px solid #1a1a1a;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header-left h1 {
+    font-size: 15pt;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .header-left p {
+    font-size: 9pt;
+    color: #444;
+    margin-top: 2px;
+  }
+  .header-right {
+    font-size: 9pt;
+    text-align: right;
+    color: #333;
+    line-height: 1.9;
+  }
+  .header-right span {
+    display: inline-block;
+    border-bottom: 1px solid #555;
+    min-width: 60px;
+    margin-left: 4px;
+  }
+
+  /* 導入メッセージ */
+  .intro-box {
+    background: #f5f5f5;
+    border-left: 4px solid #1a1a1a;
+    padding: 8px 12px;
+    margin-bottom: 16px;
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  /* 問題ブロック */
+  .problem-block {
+    border: 1.5px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .problem-header {
+    background: #1a1a1a;
+    color: white;
+    padding: 5px 12px;
+    font-size: 10pt;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .problem-header .num {
+    font-size: 13pt;
+  }
+
+  .problem-body {
+    padding: 10px 14px;
+  }
+
+  /* 最初にやること */
+  .first-step {
+    background: #fff8e1;
+    border: 1px solid #f0c040;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 10pt;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #5a4000;
+  }
+  .first-step::before {
+    content: "👉 ";
+  }
+
+  /* 問題式 */
+  .math-problem {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 8px 0 10px 0;
+  }
+  .brace-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .brace-wrap {
+    display: flex;
+    align-items: flex-start;
+  }
+  .brace {
+    font-size: 26pt;
+    line-height: 1;
+    font-weight: 300;
+    margin-right: 4px;
+    margin-top: -2px;
+  }
+  .eq-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .eq-line {
+    font-size: 11pt;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* ステップ誘導 */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .step-label {
+    background: #1a1a1a;
+    color: white;
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+  .step-content {
+    font-size: 10pt;
+    flex: 1;
+  }
+
+  /* 穴埋め */
+  .blank {
+    display: inline-block;
+    border-bottom: 1.5px solid #1a1a1a;
+    min-width: 50px;
+    margin: 0 3px;
+    vertical-align: bottom;
+  }
+  .blank-s { min-width: 30px; }
+  .blank-m { min-width: 60px; }
+  .blank-l { min-width: 80px; }
+
+  /* 選択肢 */
+  .choices {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .choice {
+    border: 1.5px solid #aaa;
+    border-radius: 20px;
+    padding: 2px 12px;
+    font-size: 10pt;
+    cursor: default;
+  }
+
+  /* 計算欄 */
+  .calc-area {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 8px;
+    padding: 8px;
+    min-height: 60px;
+    background: #fafafa;
+  }
+  .calc-area-label {
+    font-size: 8pt;
+    color: #777;
+    margin-bottom: 4px;
+  }
+  .calc-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .calc-line {
+    border-bottom: 1px dashed #ccc;
+    min-height: 18px;
+  }
+
+  /* 答え欄 */
+  .answer-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+  }
+  .answer-label {
+    font-weight: 700;
+    font-size: 10pt;
+    white-space: nowrap;
+  }
+  .answer-blank {
+    display: inline-block;
+    border-bottom: 1.5px solid #1a1a1a;
+    min-width: 80px;
+    margin: 0 6px;
+    vertical-align: bottom;
+  }
+
+  /* できたチェック */
+  .check-points {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin-top: 10px;
+    font-size: 9pt;
+  }
+  .check-points p {
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #2e7d32;
+  }
+  .check-list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .check-box {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid #2e7d32;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* 文字消しヒント */
+  .hint-box {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 9.5pt;
+    margin: 6px 0;
+  }
+
+  /* A=B=C 用の横並び式 */
+  .eq-chain {
+    font-size: 11pt;
+    margin: 8px 0 10px 6px;
+    letter-spacing: 0.02em;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { margin: 0; padding: 12mm 15mm; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <div class="header-left">
+      <h1>連立方程式 足場プリント【技法編】</h1>
+      <p>2章 連立方程式とその解き方 ／ Type A</p>
+    </div>
+    <div class="header-right">
+      名前 <span style="min-width:90px"></span><br>
+      組 <span style="min-width:30px"></span> 番 <span style="min-width:30px"></span>
+    </div>
+  </div>
+
+  <!-- 導入 -->
+  <div class="intro-box">
+    このプリントは「解く」より「最初の一歩を踏み出す」ことが目的です。<br>
+    わからなくなったら先生や友達に聞いてOK。全部できなくても大丈夫！
+  </div>
+
+  <!-- 問題① -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">①</span> 加減法（逆符号）
+    </div>
+    <div class="problem-body">
+      <div class="first-step">まず y を消そう。</div>
+
+      <div class="math-problem">
+        <div class="brace-wrap">
+          <span class="brace">{</span>
+          <div class="eq-lines">
+            <div class="eq-line">2x ＋ y ＝ 7　　…①</div>
+            <div class="eq-line">3x － y ＝ 8　　…②</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            ①と②を足すと、yが消える理由は？
+            <div class="choices">
+              <span class="choice">ア）yの係数が同じだから</span>
+              <span class="choice">イ）yの係数が逆符号（+と−）だから</span>
+            </div>
+            → 答え：（　　）
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            ①＋②を計算しよう。<br>
+            <span class="blank-s"></span>x ＝ <span class="blank-s"></span>　　→　x ＝ <span class="blank-s"></span>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            x の値を①に代入して y を求めよう。<br>
+            2×（　　）＋ y ＝ 7　→　y ＝ <span class="blank-s"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        x ＝ <span class="answer-blank"></span>　　y ＝ <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> ①＋②を計算できた</div>
+          <div class="check-item"><span class="check-box"></span> x の値を求められた</div>
+          <div class="check-item"><span class="check-box"></span> y の値を求められた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題② -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">②</span> 加減法（係数をそろえる）
+    </div>
+    <div class="problem-body">
+      <div class="first-step">y の係数をそろえてから消そう。</div>
+
+      <div class="math-problem">
+        <div class="brace-wrap">
+          <span class="brace">{</span>
+          <div class="eq-lines">
+            <div class="eq-line">2x ＋ 3y ＝ 12　　…①</div>
+            <div class="eq-line">3x － 2y ＝ 5　　…②</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-box">
+        💡 ①×2 と ②×3 を計算すると、y の係数がどちらも 6 になるよ。
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            ①×2 をしよう。<br>
+            <span class="blank-s"></span>x ＋ <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…①'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            ②×3 をしよう。<br>
+            <span class="blank-s"></span>x － <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…②'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            ①' ＋ ②' を計算しよう。（yが消える！）<br>
+            <span class="blank-s"></span>x ＝ <span class="blank-s"></span>　　→　x ＝ <span class="blank-s"></span>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 4</span>
+          <div class="step-content">
+            x の値を①に代入して y を求めよう。<br>
+            2×（　　）＋ 3y ＝ 12　→　y ＝ <span class="blank-s"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        x ＝ <span class="answer-blank"></span>　　y ＝ <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 両方の式に数をかけられた</div>
+          <div class="check-item"><span class="check-box"></span> y を消して x を求められた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題③ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">③</span> 代入法（移項なし）
+    </div>
+    <div class="problem-body">
+      <div class="first-step">① の式をそのまま ② に代入しよう。</div>
+
+      <div class="math-problem">
+        <div class="brace-wrap">
+          <span class="brace">{</span>
+          <div class="eq-lines">
+            <div class="eq-line">y ＝ 2x － 1　　…①</div>
+            <div class="eq-line">2x ＋ 3y ＝ 13　　…②</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-box">
+        💡 ①は「y ＝ ○○」の形になっている。②の y のところに ○○ をそのまま入れよう。
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            ② の y を「2x － 1」に置きかえて書こう。<br>
+            2x ＋ 3×（　　　　）＝ 13
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            かっこを外して x を求めよう。<br>
+            2x ＋ <span class="blank-s"></span>x － <span class="blank-s"></span> ＝ 13<br>
+            <span class="blank-s"></span>x ＝ <span class="blank-s"></span>　　→　x ＝ <span class="blank-s"></span>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            x の値を① に代入して y を求めよう。<br>
+            y ＝ 2×（　　）－ 1 ＝ <span class="blank-s"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        x ＝ <span class="answer-blank"></span>　　y ＝ <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> ②に代入して1つの式にできた</div>
+          <div class="check-item"><span class="check-box"></span> かっこを外せた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題④ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">④</span> 展開→加減法
+    </div>
+    <div class="problem-body">
+      <div class="first-step">まずかっこを外して、整理しよう。</div>
+
+      <div class="math-problem">
+        <div class="brace-wrap">
+          <span class="brace">{</span>
+          <div class="eq-lines">
+            <div class="eq-line">2(x ＋ y) － (y － 1) ＝ 6　　…①</div>
+            <div class="eq-line">3(x － 1) ＋ 2(x ＋ y) ＝ 10　　…②</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-box">
+        💡 かっこの前に「－」があるときは符号が変わるので注意！<br>
+        　 例：－(y－1) ＝ －y ＋ 1
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            ① のかっこを外して整理しよう。<br>
+            2x ＋ 2y － y ＋ 1 ＝ 6<br>
+            → <span class="blank-s"></span>x ＋ <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…①'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            ② のかっこを外して整理しよう。<br>
+            3x － 3 ＋ 2x ＋ 2y ＝ 10<br>
+            → <span class="blank-s"></span>x ＋ <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…②'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            ①'×2 と ②' を使って y を消そう。<br>
+            計算の欄を使って解いてみよう。
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-area">
+        <div class="calc-area-label">計算欄</div>
+        <div class="calc-lines">
+          <div class="calc-line"></div>
+          <div class="calc-line"></div>
+          <div class="calc-line"></div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        x ＝ <span class="answer-blank"></span>　　y ＝ <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> かっこを外せた</div>
+          <div class="check-item"><span class="check-box"></span> 式を整理できた（①'と②'を作れた）</div>
+          <div class="check-item"><span class="check-box"></span> 加減法で解けた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題⑤ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">⑤</span> 小数・分数を消す
+    </div>
+    <div class="problem-body">
+      <div class="first-step">まず10倍して、小数と分数を整数にしよう。</div>
+
+      <div class="math-problem">
+        <div class="brace-wrap">
+          <span class="brace">{</span>
+          <div class="eq-lines">
+            <div class="eq-line">0.2x ＋ 0.3y ＝ 1.3　　…①</div>
+            <div class="eq-line"><sup>1</sup>⁄<sub>5</sub> x － <sup>1</sup>⁄<sub>10</sub> y ＝ 0.1　　…②</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint-box">
+        💡 小数も分数も、両辺を10倍すると整数になるよ。<br>
+        　 ①×10: 2x＋3y＝13　　②×10: 2x－y＝1
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            ①×10 を確認しよう。<br>
+            <span class="blank-s"></span>x ＋ <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…①'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            ②×10 を確認しよう。<br>
+            <span class="blank-s"></span>x － <span class="blank-s"></span>y ＝ <span class="blank-s"></span>　　…②'
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            ①' と ②' を使って解こう。どの文字を消す？<br>
+            →（　　）を消す。　計算欄で解いてみよう。
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-area">
+        <div class="calc-area-label">計算欄</div>
+        <div class="calc-lines">
+          <div class="calc-line"></div>
+          <div class="calc-line"></div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        x ＝ <span class="answer-blank"></span>　　y ＝ <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 両辺を10倍できた</div>
+          <div class="check-item"><span class="check-box"></span> 整数の連立方程式に直せた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題⑥ -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="num">⑥</span> A ＝ B ＝ C の形
+    </div>
+    <div class="problem-body">
+      <div class="first-step">「＝」を2か所に分けて、2つの連立方程式を作ろう。</div>
+
+      <div class="eq-chain">
+        2x ＋ y － 1 　＝　 x － y ＋ 2 　＝　 3x － 2y － 4
+      </div>
+
+      <div class="hint-box">
+        💡 A＝B＝C のとき、「A＝B」と「B＝C」という2つの式が成り立つよ。
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-label">STEP 1</span>
+          <div class="step-content">
+            「左＝真ん中」の式を作ろう。<br>
+            2x＋y－1 ＝ x－y＋2<br>
+            → 整理すると：<span class="blank-m"></span>＝ 0　→　<span class="blank-m"></span>　　…①
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 2</span>
+          <div class="step-content">
+            「真ん中＝右」の式を作ろう。<br>
+            x－y＋2 ＝ 3x－2y－4<br>
+            → 整理すると：<span class="blank-m"></span>　　…②
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-label">STEP 3</span>
+          <div class="step-content">
+            ①と②を連立して解こう。
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-area">
+        <div class="calc-area-label">計算欄</div>
+        <div class="calc-lines">
+          <div class="calc-line"></div>
+          <div class="calc-line"></div>
+          <div class="calc-line"></div>
+        </div>
+      </div>
+
+      <div class="answer-row">
+        <span class="answer-label">答え：</span>
+        x ＝ <span class="answer-blank"></span>　　y ＝ <span class="answer-blank"></span>
+      </div>
+
+      <div class="check-points">
+        <p>✅ できたかな？</p>
+        <div class="check-list">
+          <div class="check-item"><span class="check-box"></span> 「＝」を2か所に分けられた</div>
+          <div class="check-item"><span class="check-box"></span> 2つの式を作れた</div>
+          <div class="check-item"><span class="check-box"></span> 連立して解けた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

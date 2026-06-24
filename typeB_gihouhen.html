@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>連立方程式 演習プリント【計算技法編】</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Noto Sans JP','Hiragino Sans',sans-serif; font-size:11pt; line-height:1.7; color:#1a1a1a; background:white; }
+  .page { width:210mm; min-height:297mm; margin:0 auto; padding:14mm 18mm; }
+  .header { border-bottom:2.5px solid #1a1a1a; padding-bottom:6px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .header-left h1 { font-size:15pt; font-weight:700; }
+  .header-left p { font-size:9pt; color:#444; margin-top:2px; }
+  .header-right { font-size:9pt; text-align:right; color:#333; line-height:1.9; }
+  .header-right span { display:inline-block; border-bottom:1px solid #555; min-width:60px; margin-left:4px; }
+  .intro-box { background:#f5f5f5; border-left:4px solid #1a1a1a; padding:7px 12px; margin-bottom:14px; font-size:10pt; }
+  .section-header { background:#1a1a1a; color:white; padding:5px 12px; font-size:10.5pt; font-weight:700; margin-bottom:8px; border-radius:3px; display:flex; align-items:center; gap:10px; }
+  .section-num { font-size:13pt; }
+  .problem-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+  .problem-card { border:1.5px solid #ccc; border-radius:4px; overflow:hidden; }
+  .problem-card-header { background:#f0f0f0; padding:4px 10px; font-size:9pt; font-weight:700; border-bottom:1px solid #ccc; display:flex; justify-content:space-between; }
+  .notice { font-size:8pt; color:#666; font-weight:400; }
+  .problem-card-body { padding:10px 12px; }
+  .method-hint { background:#fff8e1; border:1px solid #f0c040; border-radius:3px; padding:4px 8px; font-size:9pt; margin-bottom:6px; color:#5a4000; }
+  .brace-wrap { display:flex; align-items:flex-start; margin:6px 0 8px 0; }
+  .brace { font-size:26pt; line-height:1; font-weight:300; margin-right:4px; margin-top:-2px; }
+  .eq-lines { display:flex; flex-direction:column; gap:3px; }
+  .eq-line { font-size:11pt; }
+  .calc-space { border:1px solid #ccc; background:#fafafa; border-radius:3px; padding:6px 8px; min-height:75px; }
+  .calc-space-label { font-size:8pt; color:#888; margin-bottom:4px; }
+  .calc-lines { display:flex; flex-direction:column; gap:18px; }
+  .calc-line { border-bottom:1px dashed #ddd; }
+  .answer-row { display:flex; align-items:center; gap:6px; margin-top:8px; padding-top:6px; border-top:1px solid #eee; font-size:10pt; }
+  .answer-blank { display:inline-block; border-bottom:1.5px solid #1a1a1a; min-width:65px; margin:0 4px; vertical-align:bottom; }
+  .eq-chain { font-size:10.5pt; margin:8px 0 6px 4px; }
+  @media print { body{background:white;} .page{margin:0;padding:10mm 14mm;} }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-left">
+      <h1>連立方程式 演習プリント【計算技法編】</h1>
+      <p>2章 連立方程式とその解き方 ／ Type B</p>
+    </div>
+    <div class="header-right">
+      名前 <span style="min-width:90px"></span><br>
+      組 <span style="min-width:30px"></span> 番 <span style="min-width:30px"></span>
+    </div>
+  </div>
+  <div class="intro-box">問題を見たら「どの解き方を使うか」を考えてから解こう。途中式はしっかり書いて。</div>
+
+  <div class="section-header"><span class="section-num">①</span> 加減法（逆符号）</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-header">問1 <span class="notice">解法：加減法（逆符号）</span></div>
+      <div class="problem-card-body">
+        <div class="method-hint">👉 そのまま足すと y が消えるよ</div>
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">4x ＋ y ＝ 14　…①</div><div class="eq-line">2x － y ＝ 4　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-header">問2</div>
+      <div class="problem-card-body">
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">3x ＋ 2y ＝ 17　…①</div><div class="eq-line">x － 2y ＝ 3　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span class="section-num">②</span> 加減法（係数をそろえる）</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-header">問1 <span class="notice">解法：加減法（係数をそろえる）</span></div>
+      <div class="problem-card-body">
+        <div class="method-hint">👉 ②×2でyの係数をそろえよう</div>
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">3x ＋ 2y ＝ 13　…①</div><div class="eq-line">2x － 3y ＝ 0　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-header">問2</div>
+      <div class="problem-card-body">
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">4x ＋ 3y ＝ 22　…①</div><div class="eq-line">3x ＋ 2y ＝ 16　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span class="section-num">③</span> 代入法</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-header">問1 <span class="notice">解法：代入法</span></div>
+      <div class="problem-card-body">
+        <div class="method-hint">👉 ①を②にそのまま代入しよう</div>
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">y ＝ 3x ＋ 1　…①</div><div class="eq-line">2x ＋ y ＝ 11　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-header">問2</div>
+      <div class="problem-card-body">
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">x ＝ y ＋ 5　…①</div><div class="eq-line">2x ＋ 3y ＝ 20　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span class="section-num">④</span> 展開→加減法</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-header">問1 <span class="notice">解法：展開→加減法</span></div>
+      <div class="problem-card-body">
+        <div class="method-hint">👉 まずかっこを外して整理しよう</div>
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">2(x－y)＋y ＝ 5　…①</div><div class="eq-line">3(x＋y)－2y ＝ 15　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-header">問2</div>
+      <div class="problem-card-body">
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">4(x＋y)－y ＝ 19　…①</div><div class="eq-line">2(x－1)＋3y ＝ 15　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span class="section-num">⑤</span> 小数・分数を消す</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-header">問1 <span class="notice">解法：両辺を10倍</span></div>
+      <div class="problem-card-body">
+        <div class="method-hint">👉 両方の式を10倍して整数にしよう</div>
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">0.4x ＋ 0.3y ＝ 2.6　…①</div><div class="eq-line">(1/5)x ＋ (1/10)y ＝ 1.2　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-header">問2</div>
+      <div class="problem-card-body">
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">0.3x ＋ 0.4y ＝ 2.0　…①</div><div class="eq-line">(1/2)x － (3/4)y ＝ 0.5　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-header"><span class="section-num">⑥</span> A ＝ B ＝ C の形</div>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-header">問1 <span class="notice">解法：「＝」を2か所に分ける</span></div>
+      <div class="problem-card-body">
+        <div class="method-hint">👉 左＝真ん中、真ん中＝右 の2式を作ろう</div>
+        <div class="eq-chain">2x＋y－1 ＝ x－y＋7 ＝ 3x－2y＋6</div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-header">問2</div>
+      <div class="problem-card-body">
+        <div class="brace-wrap"><span class="brace">{</span><div class="eq-lines"><div class="eq-line">x ＋ y/2 ＝ 5　…①</div><div class="eq-line">x/2 ＋ y ＝ 4　…②</div></div></div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">答え：x＝<span class="answer-blank"></span> y＝<span class="answer-blank"></span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>連立方程式 発展プリント【文章題・発展編】</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Noto Sans JP','Hiragino Sans',sans-serif; font-size:11pt; line-height:1.7; color:#1a1a1a; background:white; }
+  .page { width:210mm; min-height:297mm; margin:0 auto; padding:14mm 18mm; }
+  .header { border-bottom:2.5px solid #1a1a1a; padding-bottom:6px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .header-left h1 { font-size:15pt; font-weight:700; }
+  .header-left p { font-size:9pt; color:#444; margin-top:2px; }
+  .header-right { font-size:9pt; text-align:right; color:#333; line-height:1.9; }
+  .header-right span { display:inline-block; border-bottom:1px solid #555; min-width:60px; margin-left:4px; }
+  .intro-box { background:#f5f5f5; border-left:4px solid #1a1a1a; padding:7px 12px; margin-bottom:14px; font-size:10pt; }
+  .problem-block { border:1.5px solid #ccc; border-radius:4px; margin-bottom:14px; overflow:hidden; }
+  .problem-header { background:#333; color:white; padding:5px 12px; font-size:10pt; font-weight:700; display:flex; align-items:center; gap:10px; }
+  .problem-num { font-size:13pt; }
+  .problem-label { font-size:8.5pt; color:#ccc; font-weight:400; margin-left:auto; }
+  .problem-body { padding:10px 14px; }
+  .problem-text { font-size:10.5pt; line-height:1.85; margin-bottom:10px; padding:8px 10px; background:#fafafa; border:1px solid #e0e0e0; border-radius:3px; }
+  .think-box { background:#f3e5f5; border:1px solid #ce93d8; border-radius:3px; padding:5px 9px; font-size:9pt; margin-bottom:8px; color:#4a148c; }
+  table { border-collapse:collapse; width:100%; font-size:9.5pt; margin:6px 0; }
+  th,td { border:1.5px solid #666; padding:5px 8px; text-align:center; }
+  th { background:#e8e8e8; font-weight:700; }
+  td.blank-cell { background:#fffde7; min-width:50px; }
+  .var-area { margin:6px 0; font-size:10pt; padding:5px 10px; background:#f9f9f9; border:1px solid #ddd; border-radius:3px; }
+  .eq-box { border:1.5px solid #aaa; border-radius:3px; padding:7px 12px; background:#fafafa; font-size:10.5pt; margin:6px 0; }
+  .blank { display:inline-block; border-bottom:1.5px solid #1a1a1a; min-width:50px; margin:0 3px; vertical-align:bottom; }
+  .calc-space { border:1px solid #ccc; background:#fafafa; border-radius:3px; padding:7px 9px; min-height:75px; margin-top:6px; }
+  .calc-space-label { font-size:8pt; color:#888; margin-bottom:4px; }
+  .calc-lines { display:flex; flex-direction:column; gap:18px; }
+  .calc-line { border-bottom:1px dashed #ddd; }
+  .answer-row { display:flex; align-items:center; gap:8px; margin-top:10px; padding-top:8px; border-top:1px solid #eee; font-size:10.5pt; flex-wrap:wrap; }
+  .answer-blank { display:inline-block; border-bottom:1.5px solid #1a1a1a; min-width:80px; margin:0 5px; vertical-align:bottom; }
+  .extra-section { border:2px dashed #aaa; border-radius:5px; padding:12px 14px; margin-top:16px; }
+  .extra-title { font-size:10pt; font-weight:700; color:#555; margin-bottom:10px; }
+  .hint { background:#e3f2fd; border:1px solid #90caf9; border-radius:3px; padding:4px 8px; font-size:9pt; margin:5px 0; }
+  @media print { body{background:white;} .page{margin:0;padding:10mm 14mm;} }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="header-left">
+      <h1>連立方程式 発展プリント【文章題・発展編】</h1>
+      <p>2章 連立方程式の利用 ／ Type C</p>
+    </div>
+    <div class="header-right">
+      名前 <span style="min-width:90px"></span><br>
+      組 <span style="min-width:30px"></span> 番 <span style="min-width:30px"></span>
+    </div>
+  </div>
+  <div class="intro-box">確認テストとの違いを意識しよう。文字の置き方・式の立て方を自分で考えることが大切。</div>
+
+  <!-- ⑦ 個数と代金（条件追加） -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="problem-num">⑦</span> 個数と代金（条件が1つ増えた）
+      <span class="problem-label">確認テストとの違い：条件の読み取り方</span>
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        遊園地の入場券は大人用と子ども用の2種類あります。大人3枚と子ども4枚を買ったら5000円でした。また、大人1枚の値段は子ども2枚の値段より200円高いです。大人用と子ども用それぞれの入場券の値段を求めなさい。
+      </div>
+      <div class="think-box">🤔 確認テストと何が違う？ → 条件の1つが「枚数と合計金額」ではなく「2種類の値段の関係」になっている</div>
+      <div class="var-area">
+        大人券1枚：<span class="blank"></span>円、子ども券1枚：<span class="blank"></span>円 とする
+      </div>
+      <div class="eq-box">
+        　条件1（合計金額）：<span class="blank" style="min-width:120px;"></span>＝ 5000　…①<br>
+        　条件2（値段の関係）：<span class="blank" style="min-width:120px;"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">大人券<span class="answer-blank"></span>円　　子ども券<span class="answer-blank"></span>円</div>
+    </div>
+  </div>
+
+  <!-- ⑧ 速さ（出会い型） -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="problem-num">⑧</span> 速さ（出会い型）
+      <span class="problem-label">確認テストとの違い：片道往復→出会い</span>
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        A地点とB地点は18km離れています。太郎さんはA地点からB地点の方向へ時速4kmで歩き始め、同時に花子さんはB地点からA地点の方向へ時速5kmで歩き始めました。2人が出会ったとき、太郎さんが歩いた距離と花子さんが歩いた距離をそれぞれ求めなさい。
+      </div>
+      <div class="think-box">🤔 確認テストは「1人が行って帰る」問題だった。今回は「2人が向かい合って歩く」。何が条件になる？</div>
+      <div class="var-area">
+        太郎が歩いた距離：<span class="blank"></span>km、花子が歩いた距離：<span class="blank"></span>km とする
+      </div>
+      <table>
+        <tr><th></th><th>速さ</th><th>時間</th><th>距離</th></tr>
+        <tr><th>太郎</th><td>時速4km</td><td class="blank-cell">（　　）時間</td><td>x km</td></tr>
+        <tr><th>花子</th><td>時速5km</td><td class="blank-cell">（　　）時間</td><td>y km</td></tr>
+      </table>
+      <div class="hint">💡 2人が出会うとき：①距離の合計は18km　②2人が歩いた時間は等しい</div>
+      <div class="eq-box">
+        　距離の合計：<span class="blank" style="min-width:100px;"></span>＝ 18　…①<br>
+        　時間が等しい：<span class="blank" style="min-width:100px;"></span>　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">太郎<span class="answer-blank"></span>km　　花子<span class="answer-blank"></span>km</div>
+    </div>
+  </div>
+
+  <!-- ⑨ 利益（割引・割増が混在） -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="problem-num">⑨</span> 利益（割引率と割増率が混在）
+      <span class="problem-label">確認テストとの違い：利益の式が複雑に</span>
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        仕入れ値がa円のシャツと仕入れ値がb円のパンツがあります。シャツとパンツの仕入れ値の合計は5000円です。シャツを30%の利益で販売し、パンツを20%引きで販売したところ、全体で400円の利益が出ました。それぞれの仕入れ値を求めなさい。
+      </div>
+      <div class="think-box">🤔 確認テストは「20%利益と10%引き」だった。今回は「30%利益と20%引き」。式の立て方は同じ？</div>
+      <div class="var-area">
+        シャツの仕入れ値：a円、パンツの仕入れ値：b円 とする
+      </div>
+      <div class="hint">
+        💡 利益の計算：シャツの利益＝0.3a　パンツの損失＝0.2b（マイナスになる）
+      </div>
+      <div class="eq-box">
+        　合計仕入れ値：<span class="blank" style="min-width:80px;"></span>＝ 5000　…①<br>
+        　利益の合計：<span class="blank" style="min-width:80px;"></span>＝ 400　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">シャツ<span class="answer-blank"></span>円　　パンツ<span class="answer-blank"></span>円</div>
+    </div>
+  </div>
+
+  <!-- ⑩ 整数（3桁） -->
+  <div class="problem-block">
+    <div class="problem-header">
+      <span class="problem-num">⑩</span> 整数（3桁の整数）
+      <span class="problem-label">確認テストとの違い：2桁→3桁</span>
+    </div>
+    <div class="problem-body">
+      <div class="problem-text">
+        百の位、十の位、一の位がそれぞれ異なる3桁の整数があります。一の位の数字は3で、百の位と十の位の数字の和は7です。また、百の位と十の位を入れ替えた3桁の整数は、元の整数より270小さくなります。元の整数を求めなさい。
+      </div>
+      <div class="think-box">🤔 確認テストは「2桁の整数」だった。3桁になると何が変わる？ → 一の位が固定されているので文字は何個必要？</div>
+      <div class="var-area">
+        百の位：<span class="blank"></span>、十の位：<span class="blank"></span> とする（一の位は3で固定）<br>
+        元の整数：100×<span class="blank"></span>＋10×<span class="blank"></span>＋3
+      </div>
+      <div class="eq-box">
+        　条件1：<span class="blank" style="min-width:100px;"></span>＝ 7　…①<br>
+        　条件2（入れ替えで270小さい）：<span class="blank" style="min-width:120px;"></span>＝ 270　…②
+      </div>
+      <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+      <div class="answer-row">元の整数は<span class="answer-blank"></span></div>
+    </div>
+  </div>
+
+  <!-- 発展問題 -->
+  <div class="extra-section">
+    <div class="extra-title">★ 発展問題（余力のある人向け）</div>
+
+    <!-- ⑪ 割合 -->
+    <div class="problem-block" style="margin-bottom:12px;">
+      <div class="problem-header">
+        <span class="problem-num">⑪</span> 割合（人数の増減）
+      </div>
+      <div class="problem-body">
+        <div class="problem-text">
+          昨年の生徒数は男女合わせて600人でした。今年は男子が20%増え、女子が10%減ったため、合計で昨年より30人増えました。昨年の男子と女子の人数をそれぞれ求めなさい。
+        </div>
+        <div class="var-area">昨年の男子：<span class="blank"></span>人、昨年の女子：<span class="blank"></span>人 とする</div>
+        <div class="eq-box">
+          　合計：<span class="blank" style="min-width:80px;"></span>＝ 600　…①<br>
+          　増減：<span class="blank" style="min-width:80px;"></span>＝ 30　…②
+        </div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">昨年の男子<span class="answer-blank"></span>人　　昨年の女子<span class="answer-blank"></span>人</div>
+      </div>
+    </div>
+
+    <!-- ⑫ 濃度 -->
+    <div class="problem-block">
+      <div class="problem-header">
+        <span class="problem-num">⑫</span> 濃度（食塩水の混合）
+      </div>
+      <div class="problem-body">
+        <div class="problem-text">
+          2%の食塩水と7%の食塩水を混ぜて、6%の食塩水を500g作りたいと思います。それぞれ何g混ぜればよいですか。
+        </div>
+        <div class="hint">💡 食塩の量＝食塩水の重さ×濃度　　混ぜる前後で食塩の量は変わらない</div>
+        <div class="var-area">2%の食塩水：<span class="blank"></span>g、7%の食塩水：<span class="blank"></span>g とする</div>
+        <div class="eq-box">
+          　重さの合計：<span class="blank" style="min-width:80px;"></span>＝ 500　…①<br>
+          　食塩の量：<span class="blank" style="min-width:100px;"></span>＝ 0.06×500　…②
+        </div>
+        <div class="calc-space"><div class="calc-space-label">途中式</div><div class="calc-lines"><div class="calc-line"></div><div class="calc-line"></div><div class="calc-line"></div></div></div>
+        <div class="answer-row">2%の食塩水<span class="answer-blank"></span>g　　7%の食塩水<span class="answer-blank"></span>g</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
