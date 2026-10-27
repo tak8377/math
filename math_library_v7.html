@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数学教材ライブラリ</title>
+<style>
+:root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#203044;background:#f4f6fa}*{box-sizing:border-box}body{margin:0}header{background:#193a60;color:white;padding:24px max(18px,calc((100vw - 1040px)/2))}h1{font-size:clamp(23px,3vw,30px);margin:0}main{max-width:1040px;margin:auto;padding:22px 18px 60px}.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}button,input{font:inherit;border-radius:9px;border:1px solid #c5d1dd;padding:10px 13px}button{background:white;cursor:pointer}button[aria-pressed=true]{background:#1d568b;color:white;border-color:#1d568b}input{flex:1;min-width:180px;background:white}.meta{font-size:13px;color:#5a6c80;margin:10px 0 18px}.chapters{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}.chapter{background:white;border:1px solid #dae2ec;border-radius:13px;overflow:hidden;align-self:start;box-shadow:0 2px 8px #1b3a6010}.chapter > summary{cursor:pointer;padding:16px;display:flex;gap:10px;align-items:center;list-style:none}.chapter > summary::-webkit-details-marker{display:none}.num{background:#e9f0f8;color:#26577f;padding:6px 9px;border-radius:8px;font-size:13px;white-space:nowrap}.name{font-weight:700;flex:1}.count{color:#61778b;font-size:12px;white-space:nowrap}.chapter > summary:after{content:'⌄';color:#70879d}.chapter[open] > summary:after{content:'⌃'}.content{border-top:1px solid #e8edf3;padding:13px 15px 16px}.empty{font-size:13px;color:#718294;margin:0} .section{margin-bottom:9px;border:1px solid #e2e9f1;border-radius:10px;overflow:hidden;background:#fafcff}.section:last-child{margin-bottom:0}.section > summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:12px 13px;font-size:14px;font-weight:700;color:#344c63;list-style:none}.section > summary::-webkit-details-marker{display:none}.section > summary:after{content:'＋';color:#627d95;font-weight:400}.section[open] > summary:after{content:'−'}.section-content{padding:0 11px 11px}.section-count{font-size:12px;font-weight:400;color:#708196;margin-left:auto;margin-right:12px}.lesson{padding:10px;border:1px solid #e2e9f1;border-radius:9px;margin:8px 0;background:#fbfcfe}.lesson-title{font-size:14px;font-weight:700;margin:0 0 9px}.links{display:grid;grid-template-columns:1fr 1fr;gap:7px}.links a{display:block;background:#e8f2fc;color:#164d80;text-decoration:none;border-radius:7px;padding:9px 6px;text-align:center;font-size:12px}.links a:hover{background:#d3e8fc}.links a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #e3a738;outline-offset:2px}.smalllink{display:block;padding:8px 9px;border-radius:7px;background:#e8f2fc;color:#164d80;text-decoration:none;font-size:13px;margin:6px 0}.hidden{display:none!important}@media(max-width:600px){.chapters{grid-template-columns:1fr}header{padding:22px 18px}}
+</style></head><body><header><h1>数学教材ライブラリ</h1></header><main><nav class="tools" aria-label="学年の選択"><button data-grade="1" aria-pressed="false">中学1年</button><button data-grade="2" aria-pressed="true">中学2年</button><button data-grade="3" aria-pressed="false">中学3年</button><input id="search" type="search" placeholder="章・教材を検索" aria-label="章・教材を検索"></nav><div class="meta" id="summary"></div><div id="chapters" class="chapters"></div></main>
+<script>
+// 教材情報は materials.json に集約。表示コードは教材追加時に変更不要。
+let curriculum={}, materials=[];
+const categoryLabels={lesson:'授業で使うセット',test:'確認テスト・解説',support:'復習・補助教材'};
+let grade=2;const root=document.getElementById('chapters'),search=document.getElementById('search');
+function make(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
+function render(){root.replaceChildren();const q=search.value.trim().toLowerCase();let shown=0;
+ const all=[{number:0,name:'複数章にまたがる教材'},...curriculum[grade].map((name,i)=>({number:i+1,name}))];
+ for(const chapter of all){const items=materials.filter(m=>m.grade===grade&&m.chapter===chapter.number);
+  if(chapter.number===0&&!items.length)continue;
+  const matched=items.filter(m=>[m.title,...m.files.flat()].join(' ').toLowerCase().includes(q));
+  if(q&&!chapter.name.toLowerCase().includes(q)&&!matched.length)continue;
+  const visible=q&&chapter.name.toLowerCase().includes(q)?items:matched;
+  const details=make('details','chapter');details.open=Boolean(q)||items.length>0;
+  const head=make('summary');head.append(make('span','num',chapter.number===0?'共通':`第${chapter.number}章`),make('span','name',chapter.name),make('span','count',items.length?`${items.length}件`:'未登録'));
+  details.append(head);const content=make('div','content');
+  if(!visible.length)content.append(make('p','empty','教材はまだ登録されていません。'));
+  else for(const category of ['lesson','test','support']){
+    const group=visible.filter(m=>m.category===category);if(!group.length)continue;
+    const section=make('details','section');section.open=Boolean(q);
+    const sectionHead=make('summary');sectionHead.append(make('span','',categoryLabels[category]),make('span','section-count',`${group.length}件`));section.append(sectionHead);
+    const sectionContent=make('div','section-content');
+    for(const m of group){const card=make('div','lesson');card.append(make('div','lesson-title',m.title));const links=make('div','links');
+      for(const [label,path] of m.files){const a=make('a','',label);a.href=path;a.target='_blank';a.rel='noopener noreferrer';links.append(a);}card.append(links);sectionContent.append(card);
+    }section.append(sectionContent);content.append(section);
+  }details.append(content);root.append(details);shown++;
+ }
+ document.getElementById('summary').textContent=`中学${grade}年｜${curriculum[grade].length}章${q?`・検索結果 ${shown}区分`:''}`;
+ if(!shown)root.append(make('p','empty','該当する教材・章がありません。'));
+}
+document.querySelectorAll('[data-grade]').forEach(b=>b.addEventListener('click',()=>{grade=Number(b.dataset.grade);document.querySelectorAll('[data-grade]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}));search.addEventListener('input',render);
+(async()=>{
+ try{
+  const response=await fetch('./materials.json',{cache:'no-store'});
+  if(!response.ok)throw new Error(`HTTP ${response.status}`);
+  const data=await response.json();
+  if(!data.curriculum||!Array.isArray(data.materials))throw new Error('データ形式が正しくありません');
+  curriculum=data.curriculum;materials=data.materials;render();
+ }catch(err){
+  document.getElementById('summary').textContent='教材データを読み込めませんでした';
+  root.replaceChildren();
+  root.append(make('p','empty','materials.json を同じフォルダに置き、GitHub Pages上で開いてください。HTMLをパソコンから直接開く場合、ブラウザの制限で読み込めないことがあります。'));
+  console.error('教材データ読込エラー',err);
+ }
+})();
+</script></body></html>
