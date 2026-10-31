@@ -1,0 +1,487 @@
+{
+  "curriculum": {
+    "1": [
+      "整数の見方",
+      "正の数，負の数",
+      "文字と式",
+      "方程式",
+      "比例と反比例",
+      "平面図形",
+      "空間図形",
+      "データの分析"
+    ],
+    "2": [
+      "式の計算",
+      "連立方程式",
+      "１次関数",
+      "平行と合同",
+      "三角形と四角形",
+      "確率",
+      "データの分析"
+    ],
+    "3": [
+      "式の計算",
+      "平方根",
+      "２次方程式",
+      "関数 y＝ax²",
+      "相似な図形",
+      "円",
+      "三平方の定理",
+      "標本調査"
+    ]
+  },
+  "materials": [
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "lesson",
+      "title": "第1時",
+      "files": [
+        [
+          "生徒用プリント",
+          "ch2_heiko_godo_01/01_第1時_生徒用プリント.pdf"
+        ],
+        [
+          "投影スライド",
+          "ch2_heiko_godo_01/02_第1時_投影スライド.pdf"
+        ],
+        [
+          "完成板書",
+          "ch2_heiko_godo_01/03_第1時_授業終了時の完成板書.pdf"
+        ],
+        [
+          "教師用メモ",
+          "ch2_heiko_godo_01/04_第1時_教師用進行メモ_解答監査.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "lesson",
+      "title": "第2時",
+      "files": [
+        [
+          "生徒用プリント",
+          "ch2_heiko_godo_02/01_第2時_生徒用プリント.pdf"
+        ],
+        [
+          "投影スライド",
+          "ch2_heiko_godo_02/02_第2時_投影スライド.pdf"
+        ],
+        [
+          "完成板書",
+          "ch2_heiko_godo_02/03_第2時_授業終了時の完成板書.pdf"
+        ],
+        [
+          "教師用メモ",
+          "ch2_heiko_godo_02/04_第2時_教師用進行メモ.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "lesson",
+      "title": "第3時",
+      "files": [
+        [
+          "生徒用プリント",
+          "ch2_heiko_godo_03/01_第03時_生徒用プリント.pdf"
+        ],
+        [
+          "投影スライド",
+          "ch2_heiko_godo_03/02_第03時_投影スライド.pdf"
+        ],
+        [
+          "完成板書",
+          "ch2_heiko_godo_03/03_第03時_授業終了時の完成板書.pdf"
+        ],
+        [
+          "教師用メモ",
+          "ch2_heiko_godo_03/04_第03時_教師用進行メモ.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "lesson",
+      "title": "第4時",
+      "files": [
+        [
+          "生徒用プリント",
+          "ch2_heiko_godo_04/01_第04時_生徒用プリント.pdf"
+        ],
+        [
+          "投影スライド",
+          "ch2_heiko_godo_04/02_第04時_投影スライド.pdf"
+        ],
+        [
+          "完成板書",
+          "ch2_heiko_godo_04/03_第04時_授業終了時の完成板書.pdf"
+        ],
+        [
+          "教師用メモ",
+          "ch2_heiko_godo_04/04_第04時_教師用進行メモ.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "lesson",
+      "title": "第5時",
+      "files": [
+        [
+          "生徒用プリント",
+          "ch2_heiko_godo_05/01_第05時_生徒用プリント.pdf"
+        ],
+        [
+          "投影スライド",
+          "ch2_heiko_godo_05/02_第05時_投影スライド.pdf"
+        ],
+        [
+          "完成板書",
+          "ch2_heiko_godo_05/03_第05時_授業終了時の完成板書.pdf"
+        ],
+        [
+          "教師用メモ",
+          "ch2_heiko_godo_05/04_第05時_教師用進行メモ.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 3,
+      "category": "test",
+      "title": "１次関数 確認テスト",
+      "files": [
+        [
+          "確認テスト PDF",
+          "一次関数_確認テスト_全4ページ_v15.pdf"
+        ],
+        [
+          "確認テスト DOCX",
+          "一次関数_確認テスト_全4ページ_v15.docx"
+        ],
+        [
+          "解説 PDF",
+          "1次関数_確認テスト_解説.pdf"
+        ],
+        [
+          "解説 PPTX",
+          "1次関数_確認テスト_解説.pptx"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 2,
+      "category": "support",
+      "title": "連立方程式と一次関数 整理ノート（複数章に関連）",
+      "files": [
+        [
+          "問題 PDF",
+          "中2数学_連立方程式と一次関数_整理ノート_第3稿改.pdf"
+        ],
+        [
+          "問題 DOCX",
+          "中2数学_連立方程式と一次関数_整理ノート_第3稿改.docx"
+        ],
+        [
+          "解答 PDF",
+          "中2数学_連立方程式と一次関数_整理ノート_第3稿改_解答.pdf"
+        ],
+        [
+          "解答 DOCX",
+          "中2数学_連立方程式と一次関数_整理ノート_第3稿改_解答.docx"
+        ]
+      ]
+    },
+    {
+      "grade": 1,
+      "chapter": 0,
+      "category": "support",
+      "title": "中1 テスト対策 演習問題集（複数章に関連）",
+      "files": [
+        [
+          "問題 DOCX",
+          "中1数学_テスト対策_演習問題集_全12ページ版.docx"
+        ],
+        [
+          "解答 DOCX",
+          "中1数学_テスト対策_演習問題集_解答解説_全6ページ版.docx"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第1時｜6つの角から、180°を見つける",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson01-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson01-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第2時｜平行線を横切ると、角はどうなる？",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson02-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson02-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第3時｜角が等しければ、平行といえる？",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson03-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson03-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第4時｜三角形の内角の和は、なぜ180°？",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson04-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson04-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第5時｜外角と、交差する図形の角をつなぐ",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson05-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson05-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第6時｜多角形の内角の和を、2通りで説明",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson06-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson06-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第7時｜多角形の外角の和が変わらない理由",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson07-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson07-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第8時｜星の5つの先端角が、なぜ180°？",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson08-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson08-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第9時｜「同じ形」だけで合同といえる？",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson09-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson09-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第10時｜三角形の合同条件を、根拠として使う",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson10-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson10-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第11時｜証明は「分かっていること」から始まる",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson11-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson11-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第12時｜正しい証明を、読みやすい証明へ",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson12-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson12-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第13時｜結論が正しくても、証明が誤ることがある",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson13-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson13-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第14時｜証明の方針は、結論から逆向きに",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson14-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson14-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "第15時｜補助線を自分で見つけて、証明する",
+      "status": "draft",
+      "files": [
+        [
+          "Webで読む",
+          "guides/ch2_heiko_godo/lesson15-guide.html"
+        ],
+        [
+          "PDFで読む",
+          "guides/ch2_heiko_godo/lesson15-guide.pdf"
+        ]
+      ]
+    },
+    {
+      "grade": 2,
+      "chapter": 4,
+      "category": "guide",
+      "title": "全15時間｜授業ガイド合本（76ページ）",
+      "status": "draft",
+      "files": [
+        [
+          "合本PDF",
+          "guides/ch2_heiko_godo/all-lessons-guide.pdf"
+        ]
+      ]
+    }
+  ]
+}
