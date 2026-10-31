@@ -1,0 +1,144 @@
+<!doctype html><html lang="ja"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>三角形の内角の和は、なぜ180°？｜中2数学 平行と合同</title><style>
+@page { size: A4; margin: 13.5mm 15mm 14mm 15mm; @bottom-center {content: "中2数学｜平行と合同　 •　授業ガイド　 •　" counter(page) " / " counter(pages); font-family: 'Noto Sans CJK JP', sans-serif; font-size: 8.3pt; color: #6d7d86;}}
+*{box-sizing:border-box} body{margin:0;color:#243848;background:#fff;font-family:'Noto Sans CJK JP','Noto Sans',sans-serif;font-size:10.6pt;line-height:1.83} .math-guide{max-width:980px;margin:0 auto}
+.page {break-after:page; page-break-after:always; min-height:255mm; position:relative}
+.page:last-child{break-after:auto;page-break-after:auto}
+.topline{height:5px;background:#276c84;margin-bottom:24px}
+.kicker{font-size:10pt;letter-spacing:.11em;font-weight:600;color:#276c84}
+.preview{display:inline-block;font-size:8pt;border:1px solid #9eabb2;border-radius:3px;padding:0 7px;letter-spacing:0;margin-left:7px;color:#62727e}
+h1{font-size:28pt;line-height:1.35;letter-spacing:-.025em;margin:11px 0 15px;font-weight:700;color:#203544}
+h2{font-size:18.5pt;line-height:1.4;margin:8px 0 13px;font-weight:700; color:#203544}
+h3{font-size:13.2pt;margin:22px 0 6px;color:#215a70}
+p{margin:0 0 10px} .lead{font-size:13.0pt;line-height:1.77;color:#344a59;margin:0 0 21px}
+.rule{height:1px;background:#d1dde2;margin:18px 0 20px}
+.number{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:1.5px solid #276c84;border-radius:50%;font-size:12pt;font-weight:700;color:#276c84;margin-right:9px}
+.side-label{display:inline-block;color:#276c84;font-size:9pt;font-weight:700;letter-spacing:.06em;border-bottom:2px solid #76a2b0;margin-bottom:6px}
+.keyquote{border-left:4px solid #307991;background:#f1f6f7;padding:13px 17px;margin:19px 0;font-size:13pt;font-weight:650;line-height:1.55;color:#254354}
+.panel{background:#f4f7f8;border:1px solid #d9e3e8;border-radius:8px;padding:14px 18px;margin:12px 0}
+.checkline{font-weight:700;font-size:10pt;color:#2b5263;margin-bottom:7px}
+.cols{display:flex;gap:18px;align-items:flex-start}.cols>*{flex:1;min-width:0}
+.steps{counter-reset:s;margin-top:11px}.step{position:relative;padding:0 0 0 30px;margin:0 0 13px}.step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;border-radius:50%;background:#245f74;color:white;width:21px;height:21px;display:flex;justify-content:center;align-items:center;font-size:9pt;font-weight:bold}
+.math-figure{display:block;width:100%;height:auto;margin:5px auto 8px}
+.figcap{text-align:center;color:#6a7b85;font-size:9pt;margin-top:1px}
+.eq{background:#f5f8f8; border-radius:6px;padding:10px 14px;font-size:11pt;line-height:2.0;margin:11px 0}
+.eq .op{color:#386678;font-weight:600}.eq strong{color:#243d4a}
+.small{font-size:9pt;color:#687c87}.note{color:#4d6270;font-size:9.5pt}
+.compare{width:100%;border-collapse:collapse;font-size:10.2pt;line-height:1.6;margin:12px 0}.compare th,.compare td{padding:10px 11px;border-bottom:1px solid #d5dfe4;text-align:left;vertical-align:top}.compare th{width:22%;color:#235c72;background:#eef4f6;font-weight:700}
+.timeline{border-top:1px solid #c8d6dd;margin-top:14px}.timeline-row{display:flex;border-bottom:1px solid #c8d6dd;padding:5px 0;font-size:10pt}.timeline-time{width:75px;flex-shrink:0;color:#215b70;font-weight:700}.timeline-body{flex:1}
+.info{display:flex;gap:11px;margin-top:7px}.info > div{border-left:3px solid #9db6bf;padding:3px 0 3px 11px;flex:1}
+.subtle{color:#6c7c85;font-size:8.9pt}
+.footer-sources{border-top:1px solid #d0dbe0;margin-top:9px;padding-top:8px;font-size:8.8pt;line-height:1.75;color:#526774}
+a{color:#276d83;text-decoration:none}
+.no-break{break-inside:avoid;page-break-inside:avoid}
+@media screen{
+ body{background:#e9eff1}.math-guide{padding:20px 30px}.page{background:#fff;margin:18px auto 26px;min-height:auto;max-width:820px;box-shadow:0 4px 22px #9baeb54d;padding:37px 44px 45px;border-radius:4px}
+}
+@media(max-width:650px){.math-guide{padding:0}.page{margin:0 0 12px;padding:21px 21px 28px;box-shadow:none}h1{font-size:24pt}.cols{display:block}}
+</style></head><body><main class="math-guide">
+<section class="page">
+<div class="topline"></div><div class="kicker">中学２年 数学｜平行と合同 第04時 </div>
+<h1>三角形の内角の和は、<br>なぜ180°？</h1>
+<p class="lead">「測ってみたら180°」から、<strong>「どんな三角形でも180°になる理由を説明できる」</strong>へ。平行線の性質を使い、２つの異なる補助線で同じ結論にたどり着きます。</p>
+<div class="keyquote">今日の問い：三角形の３つの内角の和は、なぜいつでも180°になるのだろう。</div>
+<h3>小学校で確かめたこと、中学校で考えること</h3>
+<p>小学校では、三角形の角を測ったり、切り取って並べたりして、３つの角の和が180°になることを確かめました。けれども、測定には誤差があります。「いくつかの三角形で確かめた」だけでは、どんな三角形でも必ず成り立つ理由を説明したことにはなりません。</p>
+<p>ここで活躍するのが、前の授業で学んだ<strong>平行線と錯角・同位角の性質</strong>です。角の位置に注目し、等しい大きさの角を探すと、三角形の３つの内角の和を一直線の角に結びつけられます。</p>
+<div class="panel no-break"><div class="checkline">図を見る前に考えてみよう</div><p><svg role="img" aria-label="頂点Aが上、Bが左下、Cが右下にある三角形ABC。補助線は描かれていない。" viewBox="0 0 490 180" xmlns="http://www.w3.org/2000/svg" style="display:block;width:72%;max-width:400px;height:auto;margin:4px auto 8px">
+ <path d="M242 20 L100 156 L393 156 Z" fill="none" stroke="#284052" stroke-width="3.1"/>
+ <g font-family="'Noto Sans CJK JP',sans-serif" font-weight="700" font-size="23" fill="#243848"><text x="233" y="14">A</text><text x="75" y="173">B</text><text x="395" y="174">C</text></g>
+ </svg>三角形ABCのどこを通るように、どの辺と平行な線を引けば、３つの角を一直線上に集められそうでしょうか。</p><div class="small">図にはまだ補助線を描いていません。ひとつ案を考えたら、次のページで確かめてみましょう。</div></div>
+<h3>このガイドの読み方</h3>
+<div class="info"><div><strong>学習する人へ</strong><div class="note">等しい角を見つけ、180°の理由を言葉と式で説明する。</div></div><div><strong>授業をつくる先生へ</strong><div class="note">補助線をあえて先に決めない授業づくりの理由を知る。</div></div></div>
+</section>
+<section class="page">
+<div class="topline"></div><div class="kicker">考え方 01｜Aを通る平行線</div><h2>３つの角を、頂点Aに集める</h2>
+<p>三角形ABCの頂点Aを通り、辺BCに平行な直線PQを引きます。<strong>P・A・Qは一直線上</strong>です。Aのまわりで、三角形の内角と同じ大きさの角を探します。</p>
+<figure class="no-break"><svg role="img" aria-label="三角形ABC。Aを通るBCに平行な直線PQがあり、P、A、Qが一直線上にある。" class="math-figure" viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
+ <g fill="none" stroke="#283a4c" stroke-width="3.2" stroke-linejoin="round">
+ <path d="M 232 85 L 87 257 L 480 257 Z"/>
+ </g>
+ <g fill="none" stroke="#2c8194" stroke-width="3.1" stroke-dasharray="9 6"><path d="M 53 85 L 514 85"/></g>
+ <g font-family="'Noto Sans CJK JP','Noto Sans',sans-serif" font-size="20" font-weight="600" fill="#233440">
+ <text x="221" y="64">A</text><text x="62" y="281">B</text><text x="478" y="281">C</text>
+ <text x="32" y="72">P</text><text x="518" y="72">Q</text>
+ </g>
+ <text x="272" y="57" font-family="'Noto Sans CJK JP',sans-serif" font-size="17" fill="#197286">PQ ∥ BC</text>
+ <!-- Three adjacent angle sectors visually distinguished with arcs and text, not equal-angle tick marks -->
+ <g fill="none" stroke="#627884" stroke-width="2.0"><path d="M 192 85 A 40 40 0 0 0 206 115"/><path d="M 208 115 A 43 43 0 0 0 265 117"/><path d="M 266 117 A 40 40 0 0 0 272 85"/></g>
+ </svg><figcaption class="figcap">図１　PQ ∥ BC。破線が新しく引いた線（色だけで区別していません）。</figcaption></figure>
+<div class="steps">
+<div class="step"><strong>錯角を使って、Bの角をAの近くに見つける。</strong><div>ABを横断線とみると、PQ ∥ BC より錯角が等しいので、<strong>∠PAB＝∠ABC</strong>。</div></div>
+<div class="step"><strong>同じように、Cの角に等しい角を見つける。</strong><div>ACを横断線とみると、PQ ∥ BC より錯角が等しいので、<strong>∠QAC＝∠ACB</strong>。</div></div>
+<div class="step"><strong>一直線の角は180°。</strong><div>P・A・Qが一直線上だから、Aのところに並んだ３つの角の和は180°。</div></div>
+</div>
+<div class="eq"><div><span class="op">一直線上の３つの角</span>　∠PAB＋∠BAC＋∠QAC＝180°</div><div><span class="op">等しい角に置き換えると</span>　<strong>∠ABC＋∠BAC＋∠ACB＝180°</strong></div></div>
+<div class="panel"><div class="checkline">ここが説明の要点</div>「角を動かした」と言いたくなりますが、実際に図形を動かすわけではありません。<strong>平行線の錯角が等しい</strong>ことを根拠に、同じ大きさの角として読み替えています。</div>
+</section>
+<section class="page">
+<div class="topline"></div><div class="kicker">考え方 02｜Cを通る平行線</div><h2>補助線を変えても180°を説明できる</h2>
+<p>次は、頂点Cを通り、辺ABに平行な直線CDを引きます。さらにBCをCの先まで延長して点Rをとります。<strong>B・C・Rは一直線上</strong>です。今度はCのまわりに３つの角を並べます。</p>
+<figure class="no-break"><svg role="img" aria-label="三角形ABC。点Cを通るABに平行な直線CDを引き、BCをCの右へRまで延長している。" class="math-figure" viewBox="0 0 560 310" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#283a4c" stroke-width="3.2" stroke-linejoin="round"><path d="M 225 60 L 74 258 L 378 258 Z"/></g>
+<g fill="none" stroke="#2c8194" stroke-width="3.1" stroke-dasharray="9 6">
+ <path d="M 378 258 L 468.6 139.2"/><path d="M 378 258 L 533 258"/>
+</g>
+<g font-family="'Noto Sans CJK JP','Noto Sans',sans-serif" font-size="20" font-weight="600" fill="#233440">
+ <text x="213" y="43">A</text><text x="47" y="284">B</text><text x="357" y="283">C</text><text x="473" y="128">D</text><text x="534" y="282">R</text>
+</g>
+<text x="412" y="96" font-family="'Noto Sans CJK JP',sans-serif" font-size="17" fill="#197286">CD ∥ AB</text>
+<g fill="none" stroke="#627884" stroke-width="2.0">
+ <path d="M 340 258 A 38 38 0 0 1 355 228"/>
+ <path d="M 352 227 A 42 42 0 0 1 404 224"/>
+ <path d="M 404 224 A 42 42 0 0 1 420 258"/>
+</g>
+</svg><figcaption class="figcap">図２　CD ∥ AB、B・C・Rは一直線。破線が追加した線。</figcaption></figure>
+<div class="steps">
+<div class="step"><strong>錯角から、Aの角に等しい角を見つける。</strong><div>ACを横断線とみると、CD ∥ AB より錯角が等しいので、<strong>∠ACD＝∠BAC</strong>。</div></div>
+<div class="step"><strong>同位角から、Bの角に等しい角を見つける。</strong><div>B・C・Rを横断線とみると、AB ∥ CD より同位角が等しいので、<strong>∠DCR＝∠ABC</strong>。</div></div>
+<div class="step"><strong>点Cで一直線になる３つの角を足す。</strong><div>∠BCA＋∠ACD＋∠DCR＝180°。</div></div>
+</div>
+<div class="eq"><span class="op">同じ大きさの角に置き換えると</span><br><strong>∠BCA＋∠BAC＋∠ABC＝180°</strong></div>
+<div class="panel" style="padding:11px 15px;margin-top:14px"><div class="checkline">ここを確かめよう</div>なぜ <strong>∠ACD＝∠BAC</strong> といえるのでしょうか。「平行な２直線」と「横断線」の名前を入れて説明してみましょう。</div>
+</section>
+<section class="page">
+<div class="topline"></div><div class="kicker">読み返し｜解き方を比べる</div>
+<h2>補助線は違う。でも、理由は同じ。</h2>
+<p>２つの方法は、線を引く場所も、角を集める頂点も違います。けれども、どちらも<strong>平行線で等しい角を見つけ、一直線180°につなぐ</strong>という考え方を使っています。</p>
+<h3>２つの説明は、どこが同じ？</h3>
+<table class="compare"><tbody>
+<tr><th>違うところ</th><td>１つ目はAを通る平行線、２つ目はCを通る平行線を利用する。</td></tr>
+<tr><th>同じところ</th><td>平行線の錯角・同位角を根拠に、３つの角を一直線上の角として表す。</td></tr>
+<tr><th>変わらない結論</th><td>どちらの説明でも、三角形の３つの内角の和は180°になる。</td></tr>
+</tbody></table>
+<h3>「確かめた」と「説明した」の違い</h3>
+<div class="cols"><div class="panel no-break" style="margin:2px 0"><div class="checkline">測って確かめる</div><p>いくつかの三角形で、角の和が約180°になった。</p><div class="note">観察の出発点。測るときには誤差もある。</div></div><div class="panel no-break" style="margin:2px 0"><div class="checkline">性質を使って説明する</div><p>平行線の錯角・同位角と一直線の角から、180°になる理由が分かる。</p><div class="note">三角形の形が変わっても成り立つ説明。</div></div></div>
+<h3>自分の言葉で説明できる？</h3>
+<div class="panel no-break"><div class="checkline">３つの確認</div>
+<p>①「∠PAB＝∠ABC」は、どの２直線が平行だからいえる？</p>
+<p>②２つ目の方法では、なぜ∠DCRと∠ABCが等しい？</p>
+<p>③どの式で「一直線＝180°」を使った？</p>
+<div class="small">式の丸暗記ではなく、図の中でどの角を指しているか確かめてから答えましょう。</div></div>
+<h3>間違えやすい表現</h3>
+<p>「三角形の角をAやCに動かした」という言い方は、考える手がかりにはなります。しかし、証明では実際に角を移動したわけではありません。<strong>平行線の性質によって、等しい角に置き換えられる</strong>と説明します。</p>
+<p class="small" style="margin-top:8px">まとめ：補助線で等しい角を見つけ、一直線の角180°に結びつける。</p>
+</section>
+<section class="page">
+<div class="topline"></div><div class="kicker">授業づくりの視点｜主に教員向け</div><h2>「解き方を示す」前に、考える場をつくる</h2>
+<p>この授業の中心は、180°という結論を覚えることだけではありません。<strong>どこに補助線を引けば説明できるかを自分で考え、別の説明と比べること</strong>です。</p>
+<h3>授業の展開例</h3>
+<div class="timeline">
+<div class="timeline-row"><div class="timeline-time">0～5分</div><div class="timeline-body">３直線からできる三角形と、小学校で確かめた180°を振り返る。</div></div>
+<div class="timeline-row"><div class="timeline-time">5～8分</div><div class="timeline-body">「なぜいつでも180°？」と問う。補助線の位置を最初から指定しない。</div></div>
+<div class="timeline-row"><div class="timeline-time">8～21分</div><div class="timeline-body">問題１・２を探索。考えついた人は異なる補助線にも挑戦する。</div></div>
+<div class="timeline-row"><div class="timeline-time">21～32分</div><div class="timeline-body">違う説明を比べる。１つを丁寧に共有し、もう１つは共通する根拠に注目。</div></div>
+<div class="timeline-row"><div class="timeline-time">32～36分</div><div class="timeline-body">錯角・同位角と一直線の角を根拠に、説明をまとめて記録する。</div></div>
+</div>
+<div class="small" style="margin-top:8px">時間配分は一例です。ワーク演習は9分程度を基本に、50分授業では14分程度まで充てる進め方も考えられます。</div>
+<h3>なぜ、補助線の引き方を初めから決めないのか</h3>
+<p>先生が最初に「Aを通りBCに平行な線を引きましょう」と言えば、説明は短くなります。でも、生徒が<strong>何を使って説明できそうか</strong>を考える余地は小さくなります。まず自分の図で試し、その後に友達の説明を比較すると、平行線の性質が単なる暗記事項ではなく、理由をつくる道具になります。</p>
+<div class="panel no-break"><div class="checkline">授業・家庭学習で確かめたい問い</div>① なぜ、その角同士が等しいと言えるのか。<br>② ３つの角が一直線に並ぶことを、どこで使っているか。<br>③ 別の補助線でも、同じ根拠で説明できるか。</div>
+<h3>つまずいたときの補助の出し方</h3>
+<p>補助線が思いつかない場合、初めから位置を教えるのではなく、まず「３つの角を一直線の角として見たい」という目的に戻します。次に「どの角と等しい角を探すか」「平行線を通せる頂点はどこか」と段階的に問う方法が考えられます。生徒の反応に応じて、問いかけの段階を調整することができます。</p>
+
+</section>
+</main></body></html>

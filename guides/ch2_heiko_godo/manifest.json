@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "collection_id": "jp-jhs2-parallel-congruence-public-guides",
+  "collection_title": "中学2年数学「平行と合同」授業ガイド",
+  "lessons": [
+    {
+      "lesson": 1,
+      "title": "6つの角から、180°を見つける",
+      "pdf": "lesson01-guide.pdf",
+      "html": "lesson01-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "e9b04c5b3afd942ef80912a77ea0b156fb6a59ef175df6c46692fb8ed8a43ef7",
+      "sha256_html": "744495dd66abf4147b6704dbfab109d2744d97a7c763b905ebe2f27dab277897"
+    },
+    {
+      "lesson": 2,
+      "title": "平行線を横切ると、角はどうなる？",
+      "pdf": "lesson02-guide.pdf",
+      "html": "lesson02-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "ab4dc8f1c5a4a184fad859321245525176aa87970d70f9eb3af509fff19654b4",
+      "sha256_html": "61e38de7c776ae43fe51192b10116b11887a21dfa0f4ee4dd01dbcd6403bcf6c"
+    },
+    {
+      "lesson": 3,
+      "title": "角が等しければ、平行といえる？",
+      "pdf": "lesson03-guide.pdf",
+      "html": "lesson03-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "de3df0bd405e5da508ce8470d0ef9dcd7e45de1c451a5ddc1b126ae7ef337a65",
+      "sha256_html": "7707114e86fedfedfaa3abcacfbf74d8501fe1075a85611ee228f3950ef0d665"
+    },
+    {
+      "lesson": 4,
+      "title": "三角形の内角の和は、なぜ180°？",
+      "pdf": "lesson04-guide.pdf",
+      "html": "lesson04-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "26c0a1c283fb50192bcc317844e1192d9288ae4cdad622356b04343e5dc38675",
+      "sha256_html": "648024a78fff784a5f56be95aa0742cc2a54df80a9a30215987a610aab06c729"
+    },
+    {
+      "lesson": 5,
+      "title": "外角と、交差する図形の角をつなぐ",
+      "pdf": "lesson05-guide.pdf",
+      "html": "lesson05-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "37d8590417b44d69aca0990de649b7a921788856e1a64bae73d2bc1df63d9c95",
+      "sha256_html": "9e7d8b945c7adeaea36e5bbedb038dcac55709c59d95cf28523aa85a4649ff98"
+    },
+    {
+      "lesson": 6,
+      "title": "多角形の内角の和を、2通りで説明",
+      "pdf": "lesson06-guide.pdf",
+      "html": "lesson06-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "f31a0dafda144d0a8fcc57533133dc05990b7465d40294f21eba170a05291d7f",
+      "sha256_html": "8d04117575afd2c8a9446d13026b0674c0534d8cdc0909255b1e64db6b92cb6d"
+    },
+    {
+      "lesson": 7,
+      "title": "多角形の外角の和が変わらない理由",
+      "pdf": "lesson07-guide.pdf",
+      "html": "lesson07-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "f66f9b883629b3ee08a31fa8f31c09dcd0d13d913852a4eb5899c32f41ab0cd4",
+      "sha256_html": "41f13825db036e0775f9ed043780068e8b3706d6dc903435330b05b374da2766"
+    },
+    {
+      "lesson": 8,
+      "title": "星の5つの先端角が、なぜ180°？",
+      "pdf": "lesson08-guide.pdf",
+      "html": "lesson08-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "60cbb872faf4f5a7abfa23d90646ceb765cf21c5ad91d9879b57b1eaded669f6",
+      "sha256_html": "2405cb7d19821c52d64870169862c9970334a29bbe9de3a5f9a2e1717a791960"
+    },
+    {
+      "lesson": 9,
+      "title": "「同じ形」だけで合同といえる？",
+      "pdf": "lesson09-guide.pdf",
+      "html": "lesson09-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "938d2e4a9b81068ab503b3a4f66dfb01458cb7af9f30f622c2b76471b5ecaad8",
+      "sha256_html": "ea2f08e91ef76ac59e137b8d7de2f1c3c433163556e179049c66e16e9cfe8c5b"
+    },
+    {
+      "lesson": 10,
+      "title": "三角形の合同条件を、根拠として使う",
+      "pdf": "lesson10-guide.pdf",
+      "html": "lesson10-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "50f96e3c5ccfaae66d2ac4c84540fa2d9ae123b637feecb178848f0442beab5a",
+      "sha256_html": "65f48c6c89cb615d6a52dd0ef5a759fc15df4aedf16324fd96bcf14e5740736f"
+    },
+    {
+      "lesson": 11,
+      "title": "証明は「分かっていること」から始まる",
+      "pdf": "lesson11-guide.pdf",
+      "html": "lesson11-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "06e740481c2abd33d9c7d023e7219148554d6dd232737cc6cec4eddecc0855b0",
+      "sha256_html": "fca5edee080c8e4db8dbc0b354f69fd34c7694ae88dc417f83a975849cbc3d1e"
+    },
+    {
+      "lesson": 12,
+      "title": "正しい証明を、読みやすい証明へ",
+      "pdf": "lesson12-guide.pdf",
+      "html": "lesson12-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "74ce2aebcf5ad13283aa52914eb62e668d95d13a778df2064cfe6019b87b8e72",
+      "sha256_html": "d51767437414a09b97d230b8bc30dd445d7a5b8e144fd793624e36cd9047abbe"
+    },
+    {
+      "lesson": 13,
+      "title": "結論が正しくても、証明が誤ることがある",
+      "pdf": "lesson13-guide.pdf",
+      "html": "lesson13-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "ca3bbd71e597f99a5b2d014e68e10e67e494509731ff12a8f37310327b377095",
+      "sha256_html": "2584a11b4128f6ec95459993c13855ec1cbbc0ae81d2941e8ef2751d34595033"
+    },
+    {
+      "lesson": 14,
+      "title": "証明の方針は、結論から逆向きに",
+      "pdf": "lesson14-guide.pdf",
+      "html": "lesson14-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "077204906881650a873db387df5ee7f028a0e57d9378e77c9a991163153c90c8",
+      "sha256_html": "274b0267d4904eba9719eb0a8d3af4dad8f70c77db28101720686662fe4c4bc3"
+    },
+    {
+      "lesson": 15,
+      "title": "補助線を自分で見つけて、証明する",
+      "pdf": "lesson15-guide.pdf",
+      "html": "lesson15-guide.html",
+      "page_count": 5,
+      "sha256_pdf": "d37a4cca19dd6e7fa8448abe5d436a4b6080198f5d164e93b428a84d7ccfa786",
+      "sha256_html": "4fc57f30465962714f6e1acd1cdce6c224cd4e92bd0972301c373bcac47078af"
+    }
+  ],
+  "combined_pdf": {
+    "filename": "all-lessons-guide.pdf",
+    "page_count": 76,
+    "sha256": "08858989df5adbaf6207ed1cbf420c9eb7abc855c122274dd625cb55d5b11ac9"
+  }
+}
